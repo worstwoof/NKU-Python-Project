@@ -28,9 +28,9 @@
 CyberSmash_Project/
 ├── Assets/                 # 🎨 美术资源仓库
 │   ├── Models/             # MagicaVoxel 导出的 .obj/.gltf
-│   │   ├── Character/      # [成员B] 怪兽模型
-│   │   ├── Environment/    # [成员A/D] 路块、大楼模型
-│   │   └── Props/          # [成员C] 障碍物、金币
+│   │   ├── Character/      # 金宇辰 怪兽模型
+│   │   ├── Environment/    # 黄子豪/刘珂 路块、大楼模型
+│   │   └── Props/          # 蔡子涵 障碍物、金币
 │   ├── Audio/              # 🎵 音效与 BGM
 │   └── Textures/           # 🖼️ 贴图文件
 ├── Scenes/                 # 🎬 Godot 场景文件 (.tscn)
