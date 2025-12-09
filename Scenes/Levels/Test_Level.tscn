@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1fqclqn8hksm"]
+
+[ext_resource type="PackedScene" uid="uid://bmpl3hgi36uxd" path="res://Scenes/Prefabs/road_chunk.tscn" id="1_dnkai"]
+[ext_resource type="Script" uid="uid://b2a1fvjj38iep" path="res://Scripts/Level/world_generator.gd" id="2_ynxvu"]
+
+[sub_resource type="Environment" id="Environment_pp3ym"]
+background_mode = 1
+background_color = Color(0, 0.0627451, 0.101960786, 1)
+glow_enabled = true
+glow_intensity = 1.2
+glow_bloom = 0.3
+glow_blend_mode = 0
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pp3ym")
+
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("2_ynxvu")
+road_chunk_scene = ExtResource("1_dnkai")
+scroll_speed = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.7961347, -0.3193928, 0.51396286, 0.058546998, 0.8860298, 0.4599169, -0.6022805, -0.33606482, 0.7240985, 7.9870615, 4.544381, 4.4301367)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 0, 0)
+light_energy = 0.2
