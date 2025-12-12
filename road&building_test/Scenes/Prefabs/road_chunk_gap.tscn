@@ -1,0 +1,1542 @@
+[gd_scene load_steps=20 format=3 uid="uid://cmj53wi8mdk0h"]
+
+[ext_resource type="Shader" uid="uid://dwl4qxt5qlntt" path="res://Scenes/Prefabs/tallshaer2.gdshader" id="1_o4tq0"]
+[ext_resource type="Shader" uid="uid://b36ggjoc4lb8t" path="res://Scenes/Prefabs/shadeofshortbuilding.gdshader" id="2_o4tq0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uoalo"]
+albedo_color = Color(0.14509805, 0.1764706, 0.3372549, 1)
+emission_enabled = true
+emission = Color(0.14509805, 0.1764706, 0.3372549, 1)
+emission_energy_multiplier = 0.2
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_01re2"]
+material = SubResource("StandardMaterial3D_uoalo")
+size = Vector2(400, 400)
+center_offset = Vector3(0, 0, -40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01re2"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.61481047, 0.32895318, 0.69342595, 1)
+emission_energy_multiplier = 3.92
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwkij"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.45882353, 0.91764706, 0.9529412, 1)
+anisotropy_enabled = true
+anisotropy = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5ojf"]
+albedo_color = Color(0.07450981, 0.16470589, 0.31764707, 1)
+emission = Color(0.513016, 0.2564079, 0.5837501, 1)
+
+[sub_resource type="Gradient" id="Gradient_01re2"]
+offsets = PackedFloat32Array(0.85, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r5ojf"]
+gradient = SubResource("Gradient_01re2")
+fill = 2
+fill_from = Vector2(0.5103093, 0.5154639)
+fill_to = Vector2(0.6546392, 0.5515464)
+repeat = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmfjp"]
+albedo_color = Color(0.37175596, 0.7219479, 0.92227656, 1)
+roughness = 0.2
+emission = Color(0.45490196, 0.9137255, 0.9529412, 1)
+emission_energy_multiplier = 0.2
+emission_texture = SubResource("GradientTexture2D_r5ojf")
+anisotropy = -1.0
+uv1_scale = Vector3(10, 6, 10)
+texture_filter = 2
+
+[sub_resource type="Gradient" id="Gradient_r5ojf"]
+offsets = PackedFloat32Array(0.86153847, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.49803922, 0.26666668, 0.6156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kmfjp"]
+gradient = SubResource("Gradient_r5ojf")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.52061856, 1)
+repeat = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mh2xk"]
+albedo_color = Color(0.007843138, 0.023529412, 0.07058824, 1)
+emission_enabled = true
+emission_energy_multiplier = 3.92
+emission_texture = SubResource("GradientTexture2D_kmfjp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0sxi"]
+albedo_color = Color(0.0954648, 0.33112854, 0.52269226, 1)
+emission_enabled = true
+emission_texture = SubResource("GradientTexture2D_kmfjp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pty02"]
+render_priority = 0
+shader = ExtResource("1_o4tq0")
+shader_parameter/building_color = Color(0.08423976, 0.0842525, 0.15106946, 1)
+shader_parameter/emission_strength = 5.5150002619625
+shader_parameter/global_scale = 1.04200004623512
+shader_parameter/light_primary = Color(2.695322e-06, 0.5905919, 0.8882153, 1)
+shader_parameter/light_secondary = Color(0.3647059, 0.9607843, 0.41568628, 1)
+shader_parameter/light_alert = Color(0.8235294, 0.90588236, 0.2509804, 1)
+shader_parameter/light_density = 0.2000000095
+
+[sub_resource type="Gradient" id="Gradient_ve8od"]
+offsets = PackedFloat32Array(0.85, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4t1do"]
+gradient = SubResource("Gradient_ve8od")
+fill = 2
+fill_from = Vector2(0.5103093, 0.5154639)
+fill_to = Vector2(0.6546392, 0.5515464)
+repeat = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4tq0"]
+albedo_color = Color(0.047058824, 0.22745098, 0.36078432, 1)
+roughness = 0.2
+emission_energy_multiplier = 0.2
+emission_texture = SubResource("GradientTexture2D_4t1do")
+anisotropy = -1.0
+uv1_scale = Vector3(10, 6, 10)
+texture_filter = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xyqqk"]
+render_priority = 0
+shader = ExtResource("2_o4tq0")
+shader_parameter/building_color = Color(0.05, 0.05, 0.1, 1)
+shader_parameter/emission_strength = 3.462000164445
+shader_parameter/activity_speed = 4.0
+shader_parameter/stream_brightness_ratio = 0.418000019855
+shader_parameter/light_primary = Color(0, 0.8, 1, 1)
+shader_parameter/light_secondary = Color(0, 1, 0.4, 1)
+shader_parameter/light_alert = Color(0.76099455, 0.30310994, 0.97673255, 1)
+shader_parameter/tile_factor = Vector2(60, 10)
+shader_parameter/light_density = 0.6
+
+[node name="RoadChunk" type="Node3D"]
+
+[node name="Infinite_Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19538307, -21.000002, 0.06774998)
+mesh = SubResource("PlaneMesh_01re2")
+skeleton = NodePath("../Camera3D")
+
+[node name="Infinite_Floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.100233, -20.999992, 0.06487179)
+mesh = SubResource("PlaneMesh_01re2")
+skeleton = NodePath("../Camera3D")
+
+[node name="Bridge_Body" type="CSGCombiner3D" parent="."]
+
+[node name="PurpleLight" type="CSGMesh3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.069755554)
+
+[node name="Purple_Light" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, 0)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light8" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, -3)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light9" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, -6)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light10" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, -9)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light11" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, -12)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light12" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, -15)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light2" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, 3)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light3" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, 10.004581)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light4" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, 6)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light5" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, 9)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light6" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, 12)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light7" type="CSGBox3D" parent="Bridge_Body/PurpleLight"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.1, 15)
+size = Vector3(0.1, 12, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="RailLight" type="CSGMesh3D" parent="Bridge_Body"]
+
+[node name="Rail_Light" type="CSGBox3D" parent="Bridge_Body/RailLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.1, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Rail_Light8" type="CSGBox3D" parent="Bridge_Body/RailLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.1, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Rail_Light6" type="CSGBox3D" parent="Bridge_Body/RailLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.1, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Rail_Light7" type="CSGBox3D" parent="Bridge_Body/RailLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.1, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Rail_Light2" type="CSGBox3D" parent="Bridge_Body/RailLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.1, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Rail_Light3" type="CSGBox3D" parent="Bridge_Body/RailLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Rail_Light4" type="CSGBox3D" parent="Bridge_Body/RailLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.1, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Rail_Light5" type="CSGBox3D" parent="Bridge_Body/RailLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Left" type="CSGMesh3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4944363, 0.03446293, 0.0013914108)
+
+[node name="Left_Group" type="CSGMesh3D" parent="Bridge_Body/Left"]
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Left/Left_Group"]
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Left/Left_Group/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Left/Left_Group/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="Node3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="Node3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="Node3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light18" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group/Light"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -5.36, -1.9, 0)
+size = Vector3(0.1, 30.4, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="SideLight_Left" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group"]
+transform = Transform3D(0.9944303, 0, 0, 0, 0.9944303, 0, 0, 0, 0.9944303, -4.83, -0.7, 0)
+size = Vector3(0.66, 2.4, 30.4)
+material = SubResource("StandardMaterial3D_r5ojf")
+
+[node name="SideLight_Left2" type="CSGBox3D" parent="Bridge_Body/Left/Left_Group"]
+transform = Transform3D(0.9944303, 0, 0, 0, 0.9944303, 0, 0, 0, 0.9944303, -5.26, -0.823, 0)
+size = Vector3(0.2, 2.2, 30.4)
+material = SubResource("StandardMaterial3D_r5ojf")
+
+[node name="column2" type="CSGMesh3D" parent="Bridge_Body/Left"]
+
+[node name="column" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -13.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column11" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -4.78, 1.4, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column2" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -10.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column3" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -7.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column4" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -4.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column5" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -1.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column6" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 1.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column7" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 4.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column8" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 7.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column9" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 10.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column10" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 13.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="Rail_Light2" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76, 0.75, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="column12" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -4.78, 1.1, 0)
+size = Vector3(0.2, 0.2, 30.4)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="Rail_Light3" type="CSGBox3D" parent="Bridge_Body/Left/column2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1.55, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Right" type="CSGMesh3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+
+[node name="Left_Group2" type="CSGMesh3D" parent="Bridge_Body/Right"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2"]
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Light" type="CSGMesh3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="Purple_Light13" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 8.741837e-08, 0.010035475, -8.742278e-08, -1, 0, 0.010035475, -8.7732904e-10, 0.99994963, -4.5, 0.25, -15.003)
+size = Vector3(0.1, 0.6, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light14" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(1.3113197e-07, 1, -4.3866455e-10, -0.99994963, 1.3112975e-07, 0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -4.83, 0.5, -15.003)
+size = Vector3(0.1, 0.67, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light15" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(0.99994963, -1.7484113e-07, -0.010035475, 1.7484116e-07, 1, -8.773291e-10, 0.010035475, -8.773291e-10, 0.99994963, -5.16, 0.4, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light16" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-2.1855035e-07, -1, 1.3159938e-09, 0.99994963, -2.1855251e-07, -0.010035475, 0.010035475, -8.773291e-10, 0.99994963, -5.26, 0.25, -15.003)
+size = Vector3(0.1, 0.3, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light17" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light/Light"]
+transform = Transform3D(-0.99994963, 2.622639e-07, 0.010035475, -2.6225956e-07, -1, 1.7546585e-09, 0.010035475, -8.77329e-10, 0.99994963, -5.36, -0.823, -15.003)
+size = Vector3(0.1, 2.25, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="SideLight_Left" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2"]
+transform = Transform3D(0.9944303, 0, 0, 0, 0.9944303, 0, 0, 0, 0.9944303, -4.83, -0.7, 0)
+size = Vector3(0.66, 2.4, 30.4)
+material = SubResource("StandardMaterial3D_r5ojf")
+
+[node name="SideLight_Left2" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2"]
+transform = Transform3D(0.9944303, 0, 0, 0, 0.9944303, 0, 0, 0, 0.9944303, -5.26, -0.823, 0)
+size = Vector3(0.2, 2.2, 30.4)
+material = SubResource("StandardMaterial3D_r5ojf")
+
+[node name="Purple_Light18" type="CSGBox3D" parent="Bridge_Body/Right/Left_Group2"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -5.36, -1.9, 0)
+size = Vector3(0.1, 30.4, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="column3" type="CSGMesh3D" parent="Bridge_Body/Right"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="column" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -13.500001)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column11" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -4.78, 1.4, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column2" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -10.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column3" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -7.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column4" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -4.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column5" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, -1.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column6" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 1.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column7" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 4.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column8" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 7.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column9" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 10.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="column10" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1, 13.5)
+size = Vector3(0.15, 1, 0.2)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="Rail_Light2" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76, 0.75, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="column12" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -4.78, 1.1, 0)
+size = Vector3(0.2, 0.2, 30.4)
+material = SubResource("StandardMaterial3D_kmfjp")
+
+[node name="Rail_Light3" type="CSGBox3D" parent="Bridge_Body/Right/column3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1.55, 0)
+size = Vector3(0.1, 0.1, 30.4)
+material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="Bridge_Base" type="CSGMesh3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11826515, -11.910933, 0.054779053)
+
+[node name="Bridge_Base" type="CSGBox3D" parent="Bridge_Body/Bridge_Base"]
+size = Vector3(7, 20, 7)
+material = SubResource("StandardMaterial3D_mh2xk")
+
+[node name="Bridge_Base5" type="CSGBox3D" parent="Bridge_Body/Bridge_Base"]
+size = Vector3(7, 20, 8)
+material = SubResource("StandardMaterial3D_mh2xk")
+
+[node name="Bridge_Base4" type="CSGBox3D" parent="Bridge_Body/Bridge_Base"]
+size = Vector3(8, 20, 7)
+material = SubResource("StandardMaterial3D_mh2xk")
+
+[node name="Bridge_Base2" type="CSGBox3D" parent="Bridge_Body/Bridge_Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+size = Vector3(10, 4, 10)
+material = SubResource("StandardMaterial3D_c0sxi")
+
+[node name="Bridge_Base7" type="CSGBox3D" parent="Bridge_Body/Bridge_Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+size = Vector3(11, 3, 11)
+material = SubResource("StandardMaterial3D_c0sxi")
+
+[node name="Bridge_Base3" type="CSGBox3D" parent="Bridge_Body/Bridge_Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+size = Vector3(14, 6, 14)
+material = SubResource("StandardMaterial3D_c0sxi")
+
+[node name="Bridge_Base6" type="CSGBox3D" parent="Bridge_Body/Bridge_Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+size = Vector3(11, 8, 11)
+material = SubResource("StandardMaterial3D_c0sxi")
+
+[node name="Node3D" type="Node3D" parent="Bridge_Body/Bridge_Base"]
+
+[node name="Purple_Light18" type="CSGBox3D" parent="Bridge_Body/Bridge_Base/Node3D"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 7, -9, 0)
+size = Vector3(0.3, 14.3, 0.3)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light19" type="CSGBox3D" parent="Bridge_Body/Bridge_Base/Node3D"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -7, -9, 0)
+size = Vector3(0.3, 14.3, 0.3)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Node3D2" type="Node3D" parent="Bridge_Body/Bridge_Base"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Purple_Light18" type="CSGBox3D" parent="Bridge_Body/Bridge_Base/Node3D2"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 7, -9, 0)
+size = Vector3(0.3, 14.3, 0.3)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light19" type="CSGBox3D" parent="Bridge_Body/Bridge_Base/Node3D2"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -7, -9, 0)
+size = Vector3(0.3, 14.3, 0.3)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Node3D5" type="Node3D" parent="Bridge_Body/Bridge_Base"]
+transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 0, 0)
+
+[node name="Node3D3" type="Node3D" parent="Bridge_Body/Bridge_Base/Node3D5"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 10, 0)
+
+[node name="Purple_Light18" type="CSGBox3D" parent="Bridge_Body/Bridge_Base/Node3D5/Node3D3"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 7, -9, 0)
+size = Vector3(0.3, 14.3, 0.3)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light19" type="CSGBox3D" parent="Bridge_Body/Bridge_Base/Node3D5/Node3D3"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -7, -9, 0)
+size = Vector3(0.3, 14.3, 0.3)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Node3D4" type="Node3D" parent="Bridge_Body/Bridge_Base/Node3D5"]
+transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0, 10, 0)
+
+[node name="Purple_Light18" type="CSGBox3D" parent="Bridge_Body/Bridge_Base/Node3D5/Node3D4"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 7, -9, 0)
+size = Vector3(0.3, 14.3, 0.3)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light19" type="CSGBox3D" parent="Bridge_Body/Bridge_Base/Node3D5/Node3D4"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -7, -9, 0)
+size = Vector3(0.3, 14.3, 0.3)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="tallbuilding" type="CSGBox3D" parent="Bridge_Body/Bridge_Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.14574, 13.0796, -16.403849)
+size = Vector3(11.118317, 43.855206, 14.770547)
+material = SubResource("ShaderMaterial_pty02")
+
+[node name="Floor" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.89983207, 0)
+size = Vector3(12, 2, 30.4)
+material = SubResource("StandardMaterial3D_o4tq0")
+
+[node name="cutter" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 2.8179412, 0.65253145, -13.225542)
+operation = 2
+size = Vector3(0.75183105, 1.6257324, 5.1900177)
+
+[node name="cutter2" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 3.6110072, 0.6528366, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter3" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 4.5773683, 0.6126755, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.7054443, 7.2678223)
+
+[node name="cutter75" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 3.5051613, -0.83748454, -14.259041)
+operation = 2
+size = Vector3(2.6367188, 3.2451172, 3.0839844)
+
+[node name="cutter4" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 5.371449, 0.6484421, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.6339111, 9.30249)
+
+[node name="cutter5" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 6.118322, 0.27093977, -12.30013)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 7.42688)
+
+[node name="cutter6" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 6.2557254, 1.4907157, -12.664376)
+operation = 2
+size = Vector3(0.66186523, 2.75708, 9.0217285)
+
+[node name="cutter8" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -5.521382, 0.6528366, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter16" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 4.137808, -0.47667617, -13.225542)
+operation = 2
+size = Vector3(0.75183105, 1.6257324, 5.1900177)
+
+[node name="cutter17" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 4.930874, -0.476371, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter18" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 5.897235, -0.5165321, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.7054443, 7.2678223)
+
+[node name="cutter19" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 6.6913157, -0.48076552, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.6339111, 9.30249)
+
+[node name="cutter76" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 7.409463, -1.1025357, -15.098109)
+operation = 2
+size = Vector3(11.642578, 4.2626953, 3.6054688)
+
+[node name="cutter77" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -8.366252, -0.9098673, -14.1571245)
+operation = 2
+size = Vector3(11.557495, 2.3515625, 3.1600952)
+
+[node name="cutter80" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.8352525, -0.020687819, -15.772666)
+operation = 2
+size = Vector3(11.642578, 2.098999, 0.9346924)
+
+[node name="cutter81" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.144257, -0.9962232, -16.882065)
+operation = 2
+size = Vector3(11.642578, 2.098999, 2.1896973)
+
+[node name="cutter79" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -9.859498, -0.40917253, -12.6411085)
+operation = 2
+size = Vector3(11.642578, 4.2626953, 2.1896973)
+
+[node name="cutter20" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 7.4381886, -0.85826784, -12.30013)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 7.42688)
+
+[node name="cutter21" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 7.575592, 0.36150813, -12.664376)
+operation = 2
+size = Vector3(0.66186523, 2.75708, 9.0217285)
+
+[node name="cutter22" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.994581, -0.7927772, -13.225542)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter23" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.201515, -0.476371, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter24" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 4.137808, -1.959883, -13.674772)
+operation = 2
+size = Vector3(0.75183105, 1.6257324, 5.1900177)
+
+[node name="cutter25" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 4.930874, -1.9595778, -14.708271)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter26" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 5.897235, -1.9997389, -14.708271)
+operation = 2
+size = Vector3(0.83569336, 1.7054443, 7.2678223)
+
+[node name="cutter27" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 6.6913157, -1.9639723, -14.708271)
+operation = 2
+size = Vector3(0.83569336, 1.6339111, 9.30249)
+
+[node name="cutter28" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 7.4381886, -2.3414745, -12.74936)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 7.42688)
+
+[node name="cutter29" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 7.575592, -1.1216986, -13.113606)
+operation = 2
+size = Vector3(0.66186523, 2.75708, 9.0217285)
+
+[node name="cutter30" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.994581, -2.2759838, -13.674772)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter31" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.201515, -1.9595778, -14.708271)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter32" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.573455, -0.2666664, -11.816908)
+operation = 2
+size = Vector3(0.75183105, 1.6257324, 5.1900177)
+
+[node name="cutter33" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -3.7803888, -0.26636124, -12.850407)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter34" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.8140278, -0.30652237, -12.850407)
+operation = 2
+size = Vector3(0.83569336, 1.7054443, 7.2678223)
+
+[node name="cutter35" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.019947, -0.27075577, -15.261723)
+operation = 2
+size = Vector3(0.83569336, 1.6339111, 4.4798584)
+
+[node name="cutter36" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.2730742, -0.6482582, -15.272995)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 7.42688)
+
+[node name="cutter37" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.1356707, 0.57151794, -16.939295)
+operation = 2
+size = Vector3(0.66186523, 2.75708, 9.0217285)
+
+[node name="cutter38" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -13.705844, -0.5827675, -11.816908)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter39" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -12.912778, -0.26636124, -12.850407)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter40" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.573455, 0.40117836, -10.638998)
+operation = 2
+size = Vector3(0.75183105, 1.6257324, 5.1900177)
+
+[node name="cutter41" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -3.7803888, 0.40148354, -11.672497)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter42" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.8140278, 0.3613224, -11.672497)
+operation = 2
+size = Vector3(0.83569336, 1.7054443, 7.2678223)
+
+[node name="cutter43" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.019947, 0.397089, -14.917065)
+operation = 2
+size = Vector3(0.83569336, 1.6339111, 2.8133545)
+
+[node name="cutter44" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.2730742, 0.019586563, -18.80852)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 7.42688)
+
+[node name="cutter45" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.1356707, 1.2393627, -15.735844)
+operation = 2
+size = Vector3(0.66186523, 2.75708, 9.0217285)
+
+[node name="cutter46" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -11.239634, 2.9597573, -15.277843)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter47" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -12.912778, 0.40148354, -11.672497)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter48" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.573455, -0.8830099, -16.327541)
+operation = 2
+size = Vector3(0.75183105, 1.6257324, 5.1900177)
+
+[node name="cutter49" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -3.7803888, -0.88270473, -17.36104)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter50" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.8140278, -0.92286587, -17.36104)
+operation = 2
+size = Vector3(0.83569336, 1.7054443, 7.2678223)
+
+[node name="cutter51" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.019947, -0.88709927, -17.36104)
+operation = 2
+size = Vector3(0.83569336, 1.6339111, 9.30249)
+
+[node name="cutter52" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.2730742, -1.2646017, -15.402129)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 7.42688)
+
+[node name="cutter53" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.1356707, -0.044825554, -15.766376)
+operation = 2
+size = Vector3(0.66186523, 2.75708, 9.0217285)
+
+[node name="cutter54" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -13.705844, -1.199111, -16.327541)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter55" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -12.912778, -0.88270473, -17.36104)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter56" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.573455, -2.567542, -16.327541)
+operation = 2
+size = Vector3(0.75183105, 1.6257324, 5.1900177)
+
+[node name="cutter57" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -3.7803888, -2.567237, -17.36104)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter58" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.8140278, -2.607398, -17.36104)
+operation = 2
+size = Vector3(0.83569336, 1.7054443, 7.2678223)
+
+[node name="cutter59" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.019947, -2.5716314, -17.36104)
+operation = 2
+size = Vector3(0.83569336, 1.6339111, 9.30249)
+
+[node name="cutter60" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.2730742, -2.9491339, -15.402129)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 7.42688)
+
+[node name="cutter61" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -1.1356707, -1.7293577, -15.766376)
+operation = 2
+size = Vector3(0.66186523, 2.75708, 9.0217285)
+
+[node name="cutter62" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -13.705844, -2.8836432, -16.327541)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter63" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -12.912778, -2.567237, -17.36104)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter64" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 1.3501115, -0.3675022, -13.949647)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter65" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 0.55704546, -2.3684406, -12.916148)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter66" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 1.3501115, -2.0520344, -13.949647)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter67" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 2.2838192, 0.39223957, -16.529207)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter70" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 6.4175563, -3.2878294, -14.074806)
+operation = 2
+size = Vector3(0.30371094, 7.843506, 2.8876953)
+
+[node name="cutter71" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 0.22298002, -3.2878294, -19.519821)
+operation = 2
+size = Vector3(0.30371094, 7.843506, 2.8876953)
+
+[node name="cutter68" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 1.4907532, -1.6086988, -15.49571)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter74" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 1.4907532, -1.6086988, -15.49571)
+operation = 2
+size = Vector3(0.75183105, 0.9935303, 5.1900177)
+
+[node name="cutter69" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, 2.2838192, -1.2922926, -16.529207)
+operation = 2
+size = Vector3(0.83569336, 1.6251221, 2.8876953)
+
+[node name="cutter9" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -4.555021, 0.6126755, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.7054443, 7.2678223)
+
+[node name="cutter10" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -3.76094, 0.6484421, -14.259041)
+operation = 2
+size = Vector3(0.83569336, 1.6339111, 9.30249)
+
+[node name="cutter11" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -3.0140672, 0.27093977, -12.30013)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 7.42688)
+
+[node name="cutter13" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -2.3573475, 0.27093977, -13.564076)
+operation = 2
+size = Vector3(0.66186523, 2.388916, 4.898987)
+
+[node name="cutter15" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999999, -0.23632288, 0.27093977, -13.903142)
+operation = 2
+size = Vector3(0.66186523, 4.584961, 4.2208557)
+
+[node name="Purple_Light19" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(-0.028806413, -0.022165636, -0.9993392, 0.9648776, -0.26177627, -0.022006763, -0.2611155, -0.964874, 0.028927956, 6.903281, -2.1655877, -10.996924)
+size = Vector3(0.1, 2.042, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light21" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(-0.028806413, -0.022165636, -0.9993392, 0.9648776, -0.26177627, -0.022006763, -0.2611155, -0.964874, 0.028927956, -6.903, -2.166, -10.997)
+size = Vector3(0.1, 2.042, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light20" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(-0.028806414, -0.022165634, -0.9993392, 0.8192652, -0.5733113, -0.01089948, -0.57269084, -0.8190379, 0.03467457, -6.903, -4.653, -15.204)
+size = Vector3(0.1, 7.851, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="Purple_Light22" type="CSGBox3D" parent="Bridge_Body"]
+transform = Transform3D(-0.028806413, -0.02216563, -0.9993392, 0.32812557, -0.9445645, 0.011492341, -0.94419503, -0.32757777, 0.034482617, 6.885927, -6.8849406, -13.547408)
+size = Vector3(0.1, 9.391442, 0.1)
+material = SubResource("StandardMaterial3D_01re2")
+
+[node name="shortbuilding" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.539097, -3.6993027, 14.101837)
+size = Vector3(7.737422, 34.063354, 10.664644)
+material = SubResource("ShaderMaterial_xyqqk")

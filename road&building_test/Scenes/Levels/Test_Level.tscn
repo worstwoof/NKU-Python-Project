@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1fqclqn8hksm"]
+
+[ext_resource type="PackedScene" uid="uid://bmpl3hgi36uxd" path="res://Scenes/Prefabs/road_chunk.tscn" id="1_dnkai"]
+[ext_resource type="PackedScene" uid="uid://cmj53wi8mdk0h" path="res://Scenes/Prefabs/road_chunk_gap.tscn" id="2_dnkai"]
+[ext_resource type="Script" uid="uid://b2a1fvjj38iep" path="res://Scripts/Level/world_generator.gd" id="2_ynxvu"]
+[ext_resource type="PackedScene" uid="uid://153jw1yaqra0" path="res://Scenes/Prefabs/road_chunk_gap_head.tscn" id="3_pp3ym"]
+
+[sub_resource type="Environment" id="Environment_pp3ym"]
+background_mode = 1
+background_color = Color(0, 0.0627451, 0.101960786, 1)
+glow_enabled = true
+glow_intensity = 1.2
+glow_bloom = 0.3
+glow_blend_mode = 0
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pp3ym")
+
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("2_ynxvu")
+road_straight = ExtResource("1_dnkai")
+road_break_start = ExtResource("2_dnkai")
+road_break_end = ExtResource("3_pp3ym")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.7961347, -0.31939274, 0.51396286, 0.014058124, 0.85889083, 0.51196575, -0.6049561, -0.40036833, 0.6882829, 14.873905, 8.934993, 4.4301367)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5096723, -0.8603687, 0, 0.8603687, 0.5096723, 0, 0, 0)
+light_energy = 0.2
