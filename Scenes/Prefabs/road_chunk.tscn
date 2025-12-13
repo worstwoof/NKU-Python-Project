@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmpl3hgi36uxd"]
+[gd_scene load_steps=9 format=3 uid="uid://bq3ho5yquiffb"]
 
 [sub_resource type="Gradient" id="Gradient_01re2"]
 offsets = PackedFloat32Array(0.85, 1)
@@ -48,7 +48,9 @@ anisotropy = -1.0
 uv1_scale = Vector3(10, 6, 10)
 texture_filter = 2
 
-[node name="RoadChunk" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xw7ui"]
+
+[node name="RoadChunk" type="StaticBody3D"]
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.89983207, 0)
@@ -937,3 +939,7 @@ material = SubResource("StandardMaterial3D_kmfjp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83, 1.55, 0)
 size = Vector3(0.1, 0.1, 30.4)
 material = SubResource("StandardMaterial3D_iwkij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+shape = SubResource("BoxShape3D_xw7ui")

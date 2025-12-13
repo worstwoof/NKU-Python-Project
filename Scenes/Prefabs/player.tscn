@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://w6rfodafif6c"]
+
+[ext_resource type="Script" uid="uid://8rdi1cwrqhto" path="res://Scripts/character_body.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bfwx4h6vgoevx" path="res://Scripts/magnetzone.gd" id="2_y8w33"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kelma"]
+radius = 3.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.6733419, 0, 0, 0, 1.6733419, 0, 0, 0, 1.6733419, 0, 0, 0)
+mesh = SubResource("BoxMesh_0xm2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_h2yge")
+
+[node name="MagnetZone" type="Area3D" parent="."]
+monitoring = false
+script = ExtResource("2_y8w33")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MagnetZone"]
+shape = SubResource("SphereShape3D_kelma")
