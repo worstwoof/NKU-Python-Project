@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://uv42wun4nuoy"]
+[gd_scene load_steps=18 format=3 uid="uid://uv42wun4nuoy"]
 
 [ext_resource type="PackedScene" uid="uid://w6rfodafif6c" path="res://Scenes/Prefabs/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c0r6yt8el0chu" path="res://Scenes/Prefabs/coin_blue.tscn" id="3_7mycd"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cqg2nitxqcbi2" path="res://Scenes/Prefabs/heart.tscn" id="7_ow1sv"]
 [ext_resource type="PackedScene" uid="uid://coc2cu4f47ex" path="res://Scenes/Prefabs/electric_bar_gravitate.tscn" id="8_75buv"]
 [ext_resource type="PackedScene" uid="uid://c56woryvo7dni" path="res://Scenes/Prefabs/HUD.tscn" id="10_4c57u"]
+[ext_resource type="Script" uid="uid://b2a1fvjj38iep" path="res://Scripts/Level/world_generator.gd" id="11_cyiub"]
 [ext_resource type="Script" uid="uid://bd4s7lkc0eh4q" path="res://Scripts/Objects/lane_spawner.gd" id="11_efxa6"]
-[ext_resource type="PackedScene" uid="uid://bq3ho5yquiffb" path="res://Scenes/Prefabs/road_chunk.tscn" id="13_0sxm5"]
+[ext_resource type="PackedScene" uid="uid://bmpl3hgi36uxd" path="res://Scenes/Prefabs/road_chunk.tscn" id="13_0sxm5"]
+[ext_resource type="PackedScene" uid="uid://cmj53wi8mdk0h" path="res://Scenes/Prefabs/road_chunk_gap.tscn" id="13_rwmmg"]
+[ext_resource type="PackedScene" uid="uid://153jw1yaqra0" path="res://Scenes/Prefabs/road_chunk_gap_head.tscn" id="14_fuyq5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
 transparency = 1
@@ -34,7 +37,7 @@ glow_blend_mode = 0
 [node name="Main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 3, 5)
+transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.4226183, 0, -0.4226183, 0.9063078, 0, 5.3054004, 2.4827456)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.156986, 0.98760074, 0, -0.98760074, 0.156986, -1.3186431, 4.643574, -2.7591662)
@@ -63,5 +66,8 @@ capsule_magnet = ExtResource("8_75buv")
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("10_4c57u")]
 
-[node name="RoadChunk" parent="." instance=ExtResource("13_0sxm5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, -13.91)
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("11_cyiub")
+road_chunk_scene = ExtResource("13_0sxm5")
+road_chunk_gap = ExtResource("13_rwmmg")
+road_chunk_gap_head = ExtResource("14_fuyq5")

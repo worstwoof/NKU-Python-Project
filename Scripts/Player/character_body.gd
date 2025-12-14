@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 # --- 配置参数 ---
-const LANE_WIDTH = 2.0  # 跑道宽度：每条道间隔2米（要和生成器保持一致）
+const LANE_WIDTH = 3.5  # 跑道宽度：每条道间隔2米（要和生成器保持一致）
 const LERP_SPEED = 10.0 # 换道的平滑速度（越大越快）
 
 # --- 状态变量 ---
@@ -11,9 +11,9 @@ var target_x: float = 0.0  # 目标X坐标
 @onready var shield_mesh = $ShieldMesh 
 
 # --- 新增：跳跃参数 ---
-const JUMP_VELOCITY = 10  # 跳跃力度 (根据手感微调)
+const JUMP_VELOCITY = 25 # 跳跃力度 (根据手感微调)
 # 获取 Godot 全局设置的重力值 (默认是 9.8)
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 3.5 # 乘2会让下落更快，手感更干脆
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 10 # 乘2会让下落更快，手感更干脆
 
 func _ready():
 	update_target_pos()
@@ -68,7 +68,10 @@ func _physics_process(delta):
 	
 	# 5. 执行物理移动 (这会自动处理 velocity.y 的垂直运动)
 	move_and_slide()
-
+	if global_position.y < -10.0:
+		print("玩家掉落虚空！")
+		# 直接扣除 100 点血量，确保立即死亡
+		GameManager.change_hp(-100)
 func _on_game_over():
 	# 隐藏玩家模型，制造“被摧毁”的假象
 	visible = false

@@ -4,14 +4,16 @@ extends Node
 signal hp_changed(current_hp)
 signal speed_changed(current_speed)
 signal game_over
-
+# --- 新增配置 ---
+var acceleration: float = 0.5   # 加速度：每秒增加 0.5 的速度
+var max_game_speed: float = 100 # 速度上限：防止快到人类无法反应
 # --- 全局变量 ---
 var max_hp: int = 3
 var current_hp: int = 3
 
 var base_speed: float = 15.0
 var current_speed: float = 10.0 # 这是游戏的主节奏速度
-
+var total_distance: float = 0.0 # 记录跑了多少米
 func _ready():
 	# 初始化
 	current_hp = max_hp
@@ -19,7 +21,17 @@ func _ready():
 
 var score: int = 0
 signal score_changed(new_score)
-
+func _process(delta):
+	# 如果游戏没有暂停，且速度还没达到上限
+	total_distance += current_speed * delta
+	if not get_tree().paused and current_speed < max_game_speed:
+		
+		# 1. 随着时间平滑加速
+		current_speed += acceleration * delta
+		
+		# 2. 通知 UI 更新 (显示 DATA FLOW 速度)
+		# 为了优化性能，也可以不每一帧都发信号，但对于 demo 来说没问题
+		emit_signal("speed_changed", current_speed)
 func add_score(amount: int):
 	score += amount
 	emit_signal("score_changed", score)
@@ -44,7 +56,7 @@ func reset_game():
 	# 1. 恢复数据
 	current_hp = max_hp
 	current_speed = base_speed
-	
+	total_distance = 0.0
 	# 2. 恢复游戏运行状态 (取消暂停)
 	get_tree().paused = false
 	

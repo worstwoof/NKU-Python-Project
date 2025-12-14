@@ -6,7 +6,7 @@ extends Control
 @onready var game_over_panel = $GameOverPanel 
 @onready var restart_button = $GameOverPanel/RestartButton
 @onready var score_label = $ScoreLabel 
-
+@onready var distance_label = $DistanceLabel
 func update_ui(hp, speed, score):
 	health_bar.value = hp
 	speed_label.text = "DATA FLOW: %.1f MB/s" % speed
@@ -34,7 +34,15 @@ func _ready():
 	
 	# 确保一开始是隐藏的
 	game_over_panel.visible = false
-
+func _process(delta):
+	# 我们不需要专门写信号，因为距离每一帧都在变
+	# 直接在这里读取 GameManager 的数据最流畅
+	
+	# floor() 是向下取整，把 10.53米 变成 10米
+	var dist_int = floor(GameManager.total_distance)
+	
+	# 格式化显示： "DIST: 0123 m"
+	distance_label.text = "DIST: %04d m" % dist_int
 func _on_score_changed(new_score):
 	# 格式化字符串：
 	# "SCORE: %06d" 的意思是：显示整数，如果不足6位，前面补0

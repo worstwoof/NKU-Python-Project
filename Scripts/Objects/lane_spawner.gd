@@ -10,7 +10,7 @@ extends Node3D
 @export var capsule_invincible: PackedScene # 青色无敌胶囊
 @export var capsule_magnet: PackedScene     # 紫色磁铁胶囊
 
-@export var lane_width: float = 2.0
+@export var lane_width: float = 3.5
 @export var spawn_interval: float = 1.5
 
 var timer: float = 0.0
@@ -32,7 +32,7 @@ var last_spawn_type: String = ""
 func spawn_random_object():
 	var rand_val = randf()
 	var instance = null
-	var spawn_height = 0.5 # 默认高度是地面
+	var spawn_height = 1.5 # 默认高度是地面
 	
 	# --- 定义这一波生成的类型 ---
 	var is_combo = false # 是否是组合生成 (地雷+金币)
@@ -41,7 +41,7 @@ func spawn_random_object():
 		# 30% 红锁 (必须躲，不能跳)
 		instance = obstacle_lock.instantiate()
 		
-	elif rand_val < 0.50:
+	elif rand_val < 0.50: 
 		# 20% 尖刺地雷 (建议跳跃)
 		instance = obstacle_spike.instantiate()
 		is_combo = true # 标记为组合，准备生成头顶金币
@@ -50,12 +50,12 @@ func spawn_random_object():
 		# 30% 蓝币 (普通)
 		instance = coin_blue.instantiate()
 		# 【新玩法】偶尔让蓝币出现在空中，诱导玩家乱跳
-		if randf() > 0.7: spawn_height = 2.5 
+		if randf() > 0.7: spawn_height = 3
 		
 	elif rand_val < 0.95:
 		# 15% 红币 (空中飞弹！)
 		instance = coin_red.instantiate()
-		spawn_height = 2.0 # 让它浮在半空，玩家必须跳起来吃
+		spawn_height = 3 # 让它浮在半空，玩家必须跳起来吃
 		
 	else:
 		# 5% 道具
@@ -70,7 +70,7 @@ func spawn_random_object():
 		add_child(instance)
 		var lane_index = randi_range(-1, 1)
 		# 应用高度 spawn_height
-		instance.position = Vector3(lane_index * lane_width, spawn_height, -20)
+		instance.position = Vector3(lane_index * lane_width, spawn_height, -60)
 		
 		# --- 2. 处理组合生成 (地雷头顶的币) ---
 		if is_combo:
@@ -79,7 +79,7 @@ func spawn_random_object():
 			add_child(bonus_coin)
 			# 位置：和地雷在同一条道，但是在空中 (Y=2.5)
 			# Z轴稍微错开一点点也可以，或者完全重合
-			bonus_coin.position = Vector3(lane_index * lane_width, 2.5, -20)
+			bonus_coin.position = Vector3(lane_index * lane_width, 3, -20)
 
 #func spawn_random_object():
 	#var instance
