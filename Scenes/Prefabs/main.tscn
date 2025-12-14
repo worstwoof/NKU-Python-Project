@@ -1,0 +1,73 @@
+[gd_scene load_steps=18 format=3 uid="uid://uv42wun4nuoy"]
+
+[ext_resource type="PackedScene" uid="uid://w6rfodafif6c" path="res://Scenes/Prefabs/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c0r6yt8el0chu" path="res://Scenes/Prefabs/coin_blue.tscn" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dl6qr0qjj3k37" path="res://Scenes/Prefabs/obstacle_spike.tscn" id="4_7y4ci"]
+[ext_resource type="PackedScene" uid="uid://bu1y4l2i8tgk2" path="res://Scenes/Prefabs/coin_red.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://cxfrpx7lsc6sg" path="res://Scenes/Prefabs/obstacle_lock.tscn" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://oet71gck2iub" path="res://Scenes/Prefabs/electric_bar_strong.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://cqg2nitxqcbi2" path="res://Scenes/Prefabs/heart.tscn" id="7_ow1sv"]
+[ext_resource type="PackedScene" uid="uid://coc2cu4f47ex" path="res://Scenes/Prefabs/electric_bar_gravitate.tscn" id="8_75buv"]
+[ext_resource type="PackedScene" uid="uid://c56woryvo7dni" path="res://Scenes/Prefabs/HUD.tscn" id="10_4c57u"]
+[ext_resource type="Script" uid="uid://b2a1fvjj38iep" path="res://Scripts/Level/world_generator.gd" id="11_cyiub"]
+[ext_resource type="Script" uid="uid://bd4s7lkc0eh4q" path="res://Scripts/Objects/lane_spawner.gd" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://bmpl3hgi36uxd" path="res://Scenes/Prefabs/road_chunk.tscn" id="13_0sxm5"]
+[ext_resource type="PackedScene" uid="uid://cmj53wi8mdk0h" path="res://Scenes/Prefabs/road_chunk_gap.tscn" id="13_rwmmg"]
+[ext_resource type="PackedScene" uid="uid://153jw1yaqra0" path="res://Scenes/Prefabs/road_chunk_gap_head.tscn" id="14_fuyq5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.39215687)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+rim_enabled = true
+rim = 0.5
+rim_tint = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_dg77c"]
+material = SubResource("StandardMaterial3D_efxa6")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 1
+background_color = Color(0.039215688, 0.019607844, 0.08235294, 1)
+glow_enabled = true
+glow_bloom = 0.5
+glow_blend_mode = 0
+
+[node name="Main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.4226183, 0, -0.4226183, 0.9063078, 0, 5.3054004, 2.4827456)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.156986, 0.98760074, 0, -0.98760074, 0.156986, -1.3186431, 4.643574, -2.7591662)
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002, 1, 0.005)
+
+[node name="ShieldMesh" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("SphereMesh_dg77c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bvp3")
+
+[node name="LaneSpawner" type="Node3D" parent="."]
+script = ExtResource("11_efxa6")
+obstacle_lock = ExtResource("5_5vw27")
+obstacle_spike = ExtResource("4_7y4ci")
+coin_blue = ExtResource("3_7mycd")
+coin_red = ExtResource("4_272bh")
+capsule_heart = ExtResource("7_ow1sv")
+capsule_invincible = ExtResource("6_272bh")
+capsule_magnet = ExtResource("8_75buv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("10_4c57u")]
+
+[node name="WorldGenerator" type="Node3D" parent="."]
+script = ExtResource("11_cyiub")
+road_chunk_scene = ExtResource("13_0sxm5")
+road_chunk_gap = ExtResource("13_rwmmg")
+road_chunk_gap_head = ExtResource("14_fuyq5")

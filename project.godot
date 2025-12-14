@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="CyberSmash"
-run/main_scene="uid://d1fqclqn8hksm"
+run/main_scene="uid://uv42wun4nuoy"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Scripts/Global/GameManager.gd"
 
 [rendering]
 

@@ -1,0 +1,159 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqg2nitxqcbi2"]
+
+[ext_resource type="Script" uid="uid://bmskavnbxqmue" path="res://Scripts/heart.gd" id="1_rqi32"]
+[ext_resource type="Material" uid="uid://bdjpe4ojwy6fk" path="res://Material/Heart_green.tres" id="2_km5yu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2iwn"]
+albedo_color = Color(0.44705883, 0.99215686, 0.5372549, 1)
+emission_enabled = true
+emission = Color(0.4509804, 0.9882353, 0.54509807, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqi32"]
+
+[node name="Heart" type="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_rqi32")
+
+[node name="Heart" type="CSGCombiner3D" parent="."]
+transform = Transform3D(0.6001587, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Back" type="CSGCombiner3D" parent="Heart"]
+transform = Transform3D(0.99999917, 0, 0, 0, 0.45572332, 0, 0, 0, 0.53962266, 0, 0.25532582, -0.006013551)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Heart/Back"]
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.3190751, 0, 0, 0, 0.36887604, 0, 2.6280751, -0.4132343)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.3190751, 0, 0, 0, 0.36887604, 0, 0.36115646, 1.6952634)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.3190751, 0, 0, 0, 0.36887604, 0, 0.3237815, -1.6784811)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.49469808, 0, 0, 0, 0.52462804, 0, -0.7416161, -0.7652788)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.49469808, 0, 0, 0, 0.52462804, 0, -0.7416161, 0.78839993)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.3190751, 0, 0, 0, 0.36887604, 0, 1.6531668, 2.1500888)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.3190751, 0, 0, 0, 0.36887604, 0, 1.6633353, -2.2381096)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.3190751, 0, 0, 0, 0.36887604, 0, 2.6280751, 0.41519725)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.6190084, 0, 0, 0, 1, 0, 2.77419, -1.101409)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.6190084, 0, 0, 0, 1, 0, 2.7649345, 1.079056)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9603485, 1.4797692)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99879324, 0)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 0.3728002, 0, 0, 0, 0.5279478, 0, -1.6370856, 0)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9590427, -1.542379)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0029385)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99856466, -2.0153856)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9977362, 2.0080333)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009134769, 0.009467244, -1.0055565)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9662404, 0.47582155)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.992381, -0.52668726)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0091169, -1.0073755)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0142214, 0)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Heart/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99645317, 1.0088832)
+material = ExtResource("2_km5yu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Heart"]
+transform = Transform3D(1.3018361, 0, 0, 0, 0.88737303, 0, 0, 0, 1.1860243, 0, 0.71099627, -0.006013551)
+size = Vector3(1, 0.21313477, 1)
+material = SubResource("StandardMaterial3D_c2iwn")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Heart"]
+transform = Transform3D(0.86198366, 0, 0, 0, 1.5895816, 0, 0, 0, 0.3868458, 0, 1.5900488, -1.3368797)
+size = Vector3(1, 0.21313477, 1)
+material = SubResource("StandardMaterial3D_c2iwn")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Heart"]
+transform = Transform3D(0.86198366, 0, 0, 0, 1.1861156, 0, 0, 0, 0.2894249, 0, -0.1754531, -1.1031351)
+size = Vector3(1, 0.21313477, 1)
+material = SubResource("StandardMaterial3D_c2iwn")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Heart"]
+transform = Transform3D(0.86198366, 0, 0, 0, 1.1861156, 0, 0, 0, 0.2894249, 0, -0.04271856, 1.4258627)
+size = Vector3(1, 0.21313477, 1)
+material = SubResource("StandardMaterial3D_c2iwn")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Heart"]
+transform = Transform3D(0.86198366, 0, 0, 0, 1.7141777, 0, 0, 0, 0.4398615, 0, -0.3323284, 1.0052959)
+size = Vector3(1, 0.21313477, 1)
+material = SubResource("StandardMaterial3D_c2iwn")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Heart"]
+transform = Transform3D(0.86198366, 0, 0, 0, 1.1861156, 0, 0, 0, 0.2894249, 0, 0.064312726, -1.5777862)
+size = Vector3(1, 0.21313477, 1)
+material = SubResource("StandardMaterial3D_c2iwn")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Heart"]
+transform = Transform3D(0.86198366, 0, 0, 0, 1.5895816, 0, 0, 0, 0.3868458, 0, 1.4408132, 1.487123)
+size = Vector3(1, 0.21313477, 1)
+material = SubResource("StandardMaterial3D_c2iwn")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Heart"]
+transform = Transform3D(1.3018383, 0, 0, 0, -6.423987e-08, -1.0016236, 0, 1.4696368, -4.3782357e-08, 0, 0.71099627, -0.006013551)
+size = Vector3(1, 0.21313477, 1)
+material = SubResource("StandardMaterial3D_c2iwn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rqi32")
