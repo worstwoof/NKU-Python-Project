@@ -46,6 +46,7 @@ func change_hp(amount: int):
 	
 	# --- 死亡逻辑修改 ---
 	if current_hp <= 0:
+		
 		emit_signal("game_over")
 		print("SYSTEM FAILURE!")
 		# 【关键】暂停游戏！所有 physics_process 都会停止
@@ -106,3 +107,24 @@ func activate_magnet(duration: float):
 	
 	emit_signal("magnet_state_changed", false)
 	print("磁场结束")
+
+# 1. 状态变量
+var is_breaking_wall: bool = false  # 标记当前是否正在破墙
+var saved_speed: float = 0.0        # 用来临时存一下撞墙前的速度
+
+# 2. 开始撞墙（暂停游戏节奏）
+# 这个函数由 Obstacle_Wall 在撞到玩家时调用
+func start_wall_struggle():
+	if is_breaking_wall: return
+	
+	is_breaking_wall = true
+	saved_speed = current_speed # 记住现在的速度
+	current_speed = 0.0         # 停车！
+	print("遇到防火墙！速度暂停，开始QTE！")
+
+# 3. 破墙成功（恢复游戏节奏）
+# 这个函数由 Obstacle_Wall 在被打破时调用
+func end_wall_struggle():
+	is_breaking_wall = false
+	current_speed = saved_speed # 恢复之前的速度
+	print("防火墙已攻破！速度恢复！")

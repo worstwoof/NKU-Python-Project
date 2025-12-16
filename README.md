@@ -12,9 +12,9 @@
 
 * **👾 赛博怪兽 (Cyber Kaiju):** 扮演由故障数据组成的体素怪兽。
 * **📸 体感操控 (Motion Control):**
-    * **头部倾斜:** 控制左右变道。
-    * **挥动拳头:** 击碎前方的红色防火墙 (Firewall)。
-    * **张开手掌:** 破解加密门。
+	* **头部倾斜:** 控制左右变道。
+	* **挥动拳头:** 击碎前方的红色防火墙 (Firewall)。
+	* **张开手掌:** 破解加密门。
 * **💥 物理破坏:** 利用 Godot 物理引擎实现的积木坍塌效果，极致解压。
 * **🌃 赛博视效:** 独特的 MagicaVoxel 低模风格 + Godot WorldEnvironment 辉光特效。
 
@@ -59,21 +59,21 @@ CyberSmash_Project/
 1.  下载并打开 **Godot Engine 4.x**。
 2.  点击 `导入 (Import)`，选择本项目的根文件夹。
 3.  运行 `Main.tscn` 场景。
-      * *注意：此时游戏会监听 UDP 端口 (默认 5005) 等待指令。*
+	  * *注意：此时游戏会监听 UDP 端口 (默认 5005) 等待指令。*
 
 ### 2\. 控制端 (Python)
 
 你需要一个摄像头来游玩本项目。
 
 1.  安装依赖：
-    ```bash
-    pip install mediapipe opencv-python
-    ```
+	```bash
+	pip install mediapipe opencv-python
+	```
 2.  运行控制脚本：
-    ```bash
-    cd Python_Controller
-    python main.py
-    ```
+	```bash
+	cd Python_Controller
+	python main.py
+	```
 3.  对准摄像头，开始你的表演！
 
 -----
@@ -103,10 +103,10 @@ CyberSmash_Project/
   * **风格：** Voxel Cyberpunk (体素赛博朋克)
   * **工具：** MagicaVoxel
   * **标准色板：**
-      * ⚫ **背景/建筑主体:** 纯黑 (\#000000)
-      * 🔵 **主角/友方:** 青色 (\#00FFFF) [高发光]
-      * 🔴 **敌人/障碍:** 洋红 (\#FF00FF) [高发光]
-      * 🟡 **奖励:** 亮黄 (\#FFFF00) [高发光]
+	  * ⚫ **背景/建筑主体:** 纯黑 (\#000000)
+	  * 🔵 **主角/友方:** 青色 (\#00FFFF) [高发光]
+	  * 🔴 **敌人/障碍:** 洋红 (\#FF00FF) [高发光]
+	  * 🟡 **奖励:** 亮黄 (\#FFFF00) [高发光]
 
 
 
