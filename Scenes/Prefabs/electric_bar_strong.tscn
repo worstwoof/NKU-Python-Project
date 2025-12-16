@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://oet71gck2iub"]
+[gd_scene load_steps=6 format=3 uid="uid://oet71gck2iub"]
 
-[ext_resource type="Script" uid="uid://b57f6fh2yno4t" path="res://Scripts/strong.gd" id="1_yu220"]
-[ext_resource type="Material" uid="uid://cvh5auwhriqyk" path="res://Material/Light_lightblue.tres" id="2_uyb2o"]
-[ext_resource type="Material" uid="uid://choph67465vhm" path="res://Material/Light_deepblue.tres" id="3_hdbig"]
+[ext_resource type="Script" uid="uid://b57f6fh2yno4t" path="res://Scripts/Objects/strong.gd" id="1_yu220"]
+[ext_resource type="Material" uid="uid://cvh5auwhriqyk" path="res://Assets/Material/Light_lightblue.tres" id="2_uyb2o"]
+[ext_resource type="Material" uid="uid://choph67465vhm" path="res://Assets/Material/Light_deepblue.tres" id="3_hdbig"]
+[ext_resource type="AudioStream" uid="uid://bd6d12hdwamwq" path="res://Assets/Audio/capsule_strong.ogg" id="4_f8t7f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_272bh"]
 
@@ -110,3 +111,7 @@ text = "🛡"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_272bh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f8t7f")
+volume_db = -5.0
