@@ -7,6 +7,11 @@ extends Control
 @onready var restart_button = $GameOverPanel/RestartButton
 @onready var score_label = $ScoreLabel 
 @onready var distance_label = $DistanceLabel
+@onready var pause_panel = $PausePanel 
+@onready var resume_button = $PausePanel/ResumeButton
+@onready var quit_button = $PausePanel/QuitButton # 如果你有这个按钮
+
+var is_game_over = false # 用来防止死亡后还能按出暂停菜单
 func update_ui(hp, speed, score):
 	health_bar.value = hp
 	speed_label.text = "DATA FLOW: %.1f MB/s" % speed
@@ -32,8 +37,42 @@ func _ready():
 	# 连接按钮点击信号
 	restart_button.pressed.connect(self._on_restart_pressed)
 	
-	# 确保一开始是隐藏的
+# --- 新增：连接暂停菜单按钮信号 ---
+	resume_button.pressed.connect(self._on_resume_pressed)
+	quit_button.pressed.connect(self._on_quit_pressed)
+
+	# 确保面板隐藏
 	game_over_panel.visible = false
+	pause_panel.visible = false
+# --- 新增：监听按键输入 (ESC 键) ---
+func _input(event):
+	# 如果按下了 UI Cancel (默认是 ESC)，且游戏没有结束
+	if event.is_action_pressed("ui_cancel") and not is_game_over:
+		toggle_pause()
+
+# --- 新增：切换暂停状态的函数 ---
+func toggle_pause():
+	var tree = get_tree()
+	tree.paused = not tree.paused # 切换暂停状态
+	
+	if tree.paused:
+		pause_panel.visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) # 显示鼠标
+	else:
+		pause_panel.visible = false
+		# 如果你的游戏需要隐藏鼠标，可以在这里设置 CAPTURED
+		# Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)	
+
+func _on_resume_pressed():
+	toggle_pause() # 再次调用以取消暂停
+
+func _on_quit_pressed():
+	# 恢复时间流动，否则下一局可能卡住
+	get_tree().paused = false 
+	# 切换回主菜单场景 (需要你先创建主菜单场景，见第三步)
+	# get_tree().change_scene_to_file("res://Scenes/Levels/MainMenu.tscn")
+	# 暂时先用退出游戏代替：
+	get_tree().quit()
 func _process(delta):
 	# 我们不需要专门写信号，因为距离每一帧都在变
 	# 直接在这里读取 GameManager 的数据最流畅

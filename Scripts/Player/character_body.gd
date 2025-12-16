@@ -1,8 +1,13 @@
 extends CharacterBody3D
 
 # --- 配置参数 ---
+<<<<<<< Updated upstream
 const LANE_WIDTH = 3.5  # 跑道宽度：每条道间隔2米（要和生成器保持一致）
 @export var LERP_SPEED = 10.0 # 换道的平滑速度（越大越快）
+=======
+const LANE_WIDTH = 4.5  # 跑道宽度：每条道间隔2米（要和生成器保持一致）
+const LERP_SPEED = 10.0 # 换道的平滑速度（越大越快）
+>>>>>>> Stashed changes
 
 # --- 状态变量 ---
 var current_lane: int = 0  # 当前跑道索引：-1(左), 0(中), 1(右)

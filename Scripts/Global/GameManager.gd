@@ -21,6 +21,14 @@ func _ready():
 
 var score: int = 0
 signal score_changed(new_score)
+var master_volume: float = 1.0
+
+func set_volume(value: float):
+	master_volume = value
+	# 使用 AudioServer 修改主总线音量
+	# Linear to dB 转换
+	var db = linear_to_db(value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db)
 func _process(delta):
 	# 如果游戏没有暂停，且速度还没达到上限
 	total_distance += current_speed * delta
