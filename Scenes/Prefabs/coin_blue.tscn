@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0r6yt8el0chu"]
+[gd_scene load_steps=7 format=3 uid="uid://c0r6yt8el0chu"]
 
-[ext_resource type="Script" uid="uid://b65mobfmginfc" path="res://Scripts/coin_blue.gd" id="1_ec1i7"]
-[ext_resource type="Material" uid="uid://c65ajsvvwawn8" path="res://Material/Mat_Chip_Neon.tres" id="2_1kcoq"]
-[ext_resource type="Material" uid="uid://dkllbe6dgvv0y" path="res://Material/Mat_Chip_Base.tres" id="3_jqq2n"]
+[ext_resource type="Script" uid="uid://b65mobfmginfc" path="res://Scripts/Objects/coin_blue.gd" id="1_ec1i7"]
+[ext_resource type="Material" uid="uid://c65ajsvvwawn8" path="res://Assets/Material/Mat_Chip_Neon.tres" id="2_1kcoq"]
+[ext_resource type="Material" uid="uid://dkllbe6dgvv0y" path="res://Assets/Material/Mat_Chip_Base.tres" id="3_jqq2n"]
+[ext_resource type="AudioStream" uid="uid://brpeebo0ori7w" path="res://Assets/Audio/coin_blue.ogg" id="4_kxwww"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dg77c"]
 
@@ -154,3 +155,7 @@ material = ExtResource("2_1kcoq")
 transform = Transform3D(0.33028743, 0, 0, 0, 0.65517235, 0, 0, 0, 0.2954587, -0.17573023, 0.29528767, 0.042394638)
 size = Vector3(0.20458984, 0.32714844, 1)
 material = ExtResource("2_1kcoq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kxwww")
+volume_db = -5.0

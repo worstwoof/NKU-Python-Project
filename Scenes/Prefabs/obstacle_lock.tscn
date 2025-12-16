@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxfrpx7lsc6sg"]
+[gd_scene load_steps=7 format=3 uid="uid://cxfrpx7lsc6sg"]
 
-[ext_resource type="Script" uid="uid://bcafjr4pytpuw" path="res://Scripts/obstacle.gd" id="1_y8v6n"]
-[ext_resource type="Material" uid="uid://cj6v14w6881xh" path="res://Material/Mat_Hole_Yellow.tres" id="2_uvtj7"]
-[ext_resource type="Material" uid="uid://cqfphw3dmr8xf" path="res://Material/Mat_Wall_Dark.tres" id="3_rmqde"]
+[ext_resource type="Script" uid="uid://bcafjr4pytpuw" path="res://Scripts/Objects/obstacle_lock.gd" id="1_y8v6n"]
+[ext_resource type="Material" uid="uid://cj6v14w6881xh" path="res://Assets/Material/Mat_Hole_Yellow.tres" id="2_uvtj7"]
+[ext_resource type="Material" uid="uid://cqfphw3dmr8xf" path="res://Assets/Material/Mat_Wall_Dark.tres" id="3_rmqde"]
+[ext_resource type="AudioStream" uid="uid://dw2eaef1l07e2" path="res://Assets/Audio/obstacle_hit.mp3" id="4_herqk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_color = Color(0.1254902, 0.019607844, 0.03137255, 1)
@@ -14,84 +15,88 @@ emission_energy_multiplier = 0.3
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 
 [node name="Area3D_Lock" type="Area3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_y8v6n")
 
-[node name="CSGCombiner3D_Lock" type="CSGCombiner3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 
-[node name="CSGBox3D_Wall" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Wall" type="CSGBox3D" parent="CSGCombiner3D"]
 size = Vector3(1, 1, 0.3)
 material = SubResource("StandardMaterial3D_lquwl")
 
-[node name="CSGBox3D_Hole" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Hole" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.15002829, 0, 0, 0, 0.50892633, 0, 0, 0, 1, 0, 0.2, 0)
 operation = 2
 size = Vector3(1, 1, 0.3)
 material = ExtResource("2_uvtj7")
 
-[node name="CSGBox3D_Corner" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Corner" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.38796493, 0, 0, 0, 0.2816576, 0, 0, 0, -0.39385688, -0.6247467, 0.4061126, 0.010800362)
 size = Vector3(0.67944336, 1, 1)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Corner5" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Corner5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.38796493, 0, 0, 0, 0.23674355, 0, 0, 0, 0.38796493, 0.32104945, 0.08838995, 0.17651558)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Corner7" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Corner7" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.38796493, 0, 0, 0, 0.23674355, 0, 0, 0, 0.38796493, -0.5779037, 0.1091471, -0.0014333725)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Corner6" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Corner6" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.38796493, 0, 0, 0, 0.23674355, 0, 0, 0, 0.38796493, -0.26353103, 0.45117322, -0.038145065)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Corner2" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Corner2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.3474216, 0, 0, 0, 0.3099325, 0, 0, 0, 0.38796493, 0.44326094, 0.42772374, 0.046138763)
 size = Vector3(1, 1, 0.8930664)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Corner3" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Corner3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.333634, 0, 0, 0, 0.2866428, 0, 0, 0, 0.38796493, -0.53675205, -0.4661349, -0.023566246)
 size = Vector3(1.168457, 1, 1)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Corner4" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Corner4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.29161292, 0, 0, 0, 0.2891686, 0, 0, 0, 0.22750229, 0.48622897, -0.45158204, 0.12346363)
 size = Vector3(1, 1, 1.0673828)
 material = ExtResource("3_rmqde")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.2, 0)
 operation = 2
 radius = 0.2
 height = 0.3
 material = ExtResource("2_uvtj7")
 
-[node name="CSGBox3D_Piece" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Piece" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.21405894, 0, 0, 0, 0.21405894, 0, 0, 0, 0.21405894, 0.60386485, -0.23570222, 0.041251183)
 size = Vector3(0.5209961, 0.5, 1.1799469)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Piece2" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Piece2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.21405894, 0, 0, 0, 0.21405894, 0, 0, 0, 0.38911393, 0.6020697, -0.10906671, 0.12791061)
 size = Vector3(0.5, 0.5, 0.6503906)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Piece3" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Piece3" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.21405894, 0, 0, 0, 0.21405894, 0, 0, 0, 0.21405894, -0.5920023, -0.08941467, 0.17345905)
 size = Vector3(0.5, 0.484375, 0.5)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Piece4" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Piece4" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.21405894, 0, 0, 0, 0.21405894, 0, 0, 0, 0.21405894, 0.045478426, -0.7061848, -0.0025339127)
 size = Vector3(0.5, 0.5, 0.5)
 material = ExtResource("3_rmqde")
 
-[node name="CSGBox3D_Piece5" type="CSGBox3D" parent="CSGCombiner3D_Lock"]
+[node name="CSGBox3D_Piece5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(0.21405894, 0, 0, 0, 0.21405894, 0, 0, 0, 0.21405894, 0.47608685, -1.2000308, -1.0362835)
 size = Vector3(0.5, 0.5, 0.5)
 material = ExtResource("3_rmqde")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_lquwl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_herqk")
+volume_db = -5.0

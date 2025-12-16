@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu1y4l2i8tgk2"]
+[gd_scene load_steps=8 format=3 uid="uid://bu1y4l2i8tgk2"]
 
-[ext_resource type="Script" uid="uid://cf50io2f5qapg" path="res://Scripts/coin_red.gd" id="1_spwfx"]
-[ext_resource type="Material" uid="uid://bd4jse8w88btq" path="res://Material/Mat_Chip_Red.tres" id="1_u0m0s"]
-[ext_resource type="Material" uid="uid://0ufrj72nqq4s" path="res://Material/Coin_Line_Red.tres" id="2_spwfx"]
-[ext_resource type="Material" uid="uid://dkllbe6dgvv0y" path="res://Material/Mat_Chip_Base.tres" id="3_oxujo"]
+[ext_resource type="Script" uid="uid://cf50io2f5qapg" path="res://Scripts/Objects/coin_red.gd" id="1_spwfx"]
+[ext_resource type="Material" uid="uid://bd4jse8w88btq" path="res://Assets/Material/Mat_Chip_Red.tres" id="1_u0m0s"]
+[ext_resource type="Material" uid="uid://0ufrj72nqq4s" path="res://Assets/Material/Coin_Line_Red.tres" id="2_spwfx"]
+[ext_resource type="Material" uid="uid://dkllbe6dgvv0y" path="res://Assets/Material/Mat_Chip_Base.tres" id="3_oxujo"]
+[ext_resource type="AudioStream" uid="uid://c4iamrgbfn5kj" path="res://Assets/Audio/coin_red.ogg" id="5_d1h00"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dg77c"]
 
@@ -168,3 +169,7 @@ material = ExtResource("1_u0m0s")
 transform = Transform3D(0.33028743, 0, 0, 0, 0.65517235, 0, 0, 0, 0.2954587, -0.17573023, 0.29528767, 0.042394638)
 size = Vector3(0.20458984, 0.32714844, 1)
 material = ExtResource("1_u0m0s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_d1h00")
+volume_db = -5.0

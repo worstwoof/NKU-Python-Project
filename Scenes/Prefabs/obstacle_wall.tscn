@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkx30p0exn6pn"]
+
+[ext_resource type="Script" uid="uid://x10g2gx286gp" path="res://Scripts/Objects/obstacle_wall.gd" id="1_nly1y"]
+[ext_resource type="AudioStream" uid="uid://qtscsiiijq2g" path="res://Assets/Audio/obstacle_wall.ogg" id="2_jr143"]
+[ext_resource type="AudioStream" uid="uid://4xitliph5125" path="res://Assets/Audio/obstacle_wall_break.ogg" id="3_qdbx6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nr3bm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uqoa"]
+albedo_color = Color(0, 0.011764706, 0.0627451, 1)
+emission_enabled = true
+emission = Color(0.078431375, 0.011764706, 0.0627451, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="Gradient" id="Gradient_wnorh"]
+offsets = PackedFloat32Array(0, 0.64615387, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_psdot"]
+gradient = SubResource("Gradient_wnorh")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujgns"]
+albedo_color = Color(0, 0.011764706, 0.0627451, 1)
+metallic = 0.5
+emission_enabled = true
+emission = Color(0.078431375, 0.011764706, 0.0627451, 1)
+emission_energy_multiplier = 5.0
+emission_texture = SubResource("GradientTexture2D_psdot")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wnorh"]
+initial_velocity_max = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psdot"]
+albedo_color = Color(0.25490198, 0.14901961, 0.27058825, 1)
+emission_enabled = true
+emission = Color(0.25490198, 0.14901961, 0.27058825, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ujgns"]
+material = SubResource("StandardMaterial3D_psdot")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnorh"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[node name="obstacle_wall" type="Area3D"]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
+script = ExtResource("1_nly1y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3.9322588, 0, 0, 0, 2.3680704, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_nr3bm")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(3.4364495, 0, 0, 0, 1.7541959, 0, 0, 0, 0.4893028, 0, 0, 0)
+material = SubResource("StandardMaterial3D_1uqoa")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.6770183, 0, 0, 0, 0.7035559, 0, 0, 0, 0.48927322, -1.5596263, 0.80465806, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.77624875, 0, 0, 0, 0.53895235, 0, 0, 0, 0.48927322, -1.5596263, 0.12860954, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.73049086, 0, 0, 0, 0.40699947, 0, 0, 0, 0.48927322, -1.5596263, -0.8675443, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.6095251, 0, 0, 0, 0.6973659, 0, 0, 0, 0.48927322, 1.6786234, -0.8675443, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.8161647, 0, 0, 0, 0.4173817, 0, 0, 0, 0.48927322, 1.7375677, -0.25020885, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.3940442, 0, 0, 0, 0.37492374, 0, 0, 0, 0.48927322, 1.7375677, 0.19894654, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.6770183, 0, 0, 0, 0.5666834, 0, 0, 0, 0.48927322, -0.22845876, -0.8675443, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.0435835, 0, 0, 0, 0.39994422, 0, 0, 0, 0.48927322, 0.7319991, -0.8675443, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.42000356, 0, 0, 0, 0.40699947, 0, 0, 0, 0.48927322, -0.8538262, -0.8675443, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.5735289, 0, 0, 0, 0.3063063, 0, 0, 0, 0.48927322, -1.5596263, -0.43827164, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.6017477, 0, 0, 0, 0.7383833, 0, 0, 0, 0.48927322, -0.68775785, 0.80465806, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.9513434, 0, 0, 0, 0.53591233, 0, 0, 0, 0.48927322, 0.21255374, 0.80465806, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.7687698, 0, 0, 0, 0.7953836, 0, 0, 0, 0.48927322, 1.6258409, 0.84024966, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(0.2932097, 0, 0, 0, 0.62093776, 0, 0, 0, 0.48927322, 0.9689379, 0.80465806, 0)
+material = SubResource("StandardMaterial3D_ujgns")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.2376183, 0.259036)
+text = "WAVE Punch TO BREAK !"
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.2693709, 0.2492671)
+text = "⚠"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_wnorh")
+draw_pass_1 = SubResource("BoxMesh_ujgns")
+
+[node name="TimerBarMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(2.2302632, 0, 0, 0, 1, 0, 0, 0, 0.591676, 0, 0.6888787, 0)
+size = Vector3(1, 0.16894531, 1)
+material = SubResource("StandardMaterial3D_wnorh")
+
+[node name="engage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jr143")
+volume_db = -5.0
+parameters/looping = false
+
+[node name="wall_break" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qdbx6")
+volume_db = -5.0

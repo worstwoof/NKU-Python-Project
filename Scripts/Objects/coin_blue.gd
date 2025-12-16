@@ -29,11 +29,21 @@ func _physics_process(delta):
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
-
+var is_collected: bool = false
 func _on_body_entered(body):
 	if body.name == "Player":
+		if is_collected or body.name != "Player":
+			return
+	
+		# 3. 立即上锁
+		is_collected = true
 		# 加分 (需要在 GameManager 里写好 add_score 函数)
 		GameManager.add_score(score_amount)
+		$AudioStreamPlayer.play()
 		
+		$CSGCombiner3D_Coin.visible = false
+		$CollisionShape3D.set_deferred("disabled", true)
+		#await get_tree().create_timer(1.0).timeout
+		await $AudioStreamPlayer.finished
 		# 播放一个轻微的音效
 		queue_free()

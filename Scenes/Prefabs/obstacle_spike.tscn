@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl6qr0qjj3k37"]
+[gd_scene load_steps=7 format=3 uid="uid://dl6qr0qjj3k37"]
 
-[ext_resource type="Script" uid="uid://bcafjr4pytpuw" path="res://Scripts/obstacle.gd" id="1_1r1dn"]
-[ext_resource type="Material" uid="uid://choph67465vhm" path="res://Material/Light_deepblue.tres" id="2_cgdv4"]
-[ext_resource type="Material" uid="uid://b0dl2vtxq7qht" path="res://Material/virus_orange.tres" id="3_fgo5f"]
+[ext_resource type="Script" uid="uid://bcafjr4pytpuw" path="res://Scripts/Objects/obstacle_lock.gd" id="1_1r1dn"]
+[ext_resource type="Material" uid="uid://choph67465vhm" path="res://Assets/Material/Light_deepblue.tres" id="2_cgdv4"]
+[ext_resource type="Material" uid="uid://b0dl2vtxq7qht" path="res://Assets/Material/virus_orange.tres" id="3_fgo5f"]
+[ext_resource type="AudioStream" uid="uid://dw2eaef1l07e2" path="res://Assets/Audio/obstacle_hit.mp3" id="4_v7b7p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c2iwn"]
 
@@ -427,3 +428,7 @@ material = ExtResource("3_fgo5f")
 [node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D/CSGCombiner3D3"]
 transform = Transform3D(0.091192596, 0, 0, 0, 0.15788533, 0, 0, 0, 0.08996037, -0.006524338, 0.3748833, 0.011667252)
 material = ExtResource("3_fgo5f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v7b7p")
+volume_db = -5.0

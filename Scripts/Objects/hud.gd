@@ -62,6 +62,7 @@ func _on_game_over():
 	game_over_panel.visible = true
 	# 显示鼠标光标 (如果不显示玩家没法点按钮)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$AudioStreamPlayer.play()
 
 func _on_restart_pressed():
 	# 1. 重置游戏数据 (调用 GameManager 的函数)
