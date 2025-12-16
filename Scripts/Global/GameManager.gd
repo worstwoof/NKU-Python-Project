@@ -5,13 +5,13 @@ signal hp_changed(current_hp)
 signal speed_changed(current_speed)
 signal game_over
 # --- 新增配置 ---
-@export var acceleration: float = 0.5   # 加速度：每秒增加 0.5 的速度
+@export var acceleration: float = 1  # 加速度：每秒增加 0.5 的速度
 @export var max_game_speed: float = 100 # 速度上限：防止快到人类无法反应
 # --- 全局变量 ---
 @export var max_hp: int = 3
 var current_hp: int = 3
 
-@export var base_speed: float = 15.0
+@export var base_speed: float = 20
 var current_speed: float = 10.0 # 这是游戏的主节奏速度
 var total_distance: float = 0.0 # 记录跑了多少米
 func _ready():

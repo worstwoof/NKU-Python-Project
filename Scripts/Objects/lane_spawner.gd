@@ -11,7 +11,7 @@ extends Node3D
 @export var capsule_invincible: PackedScene # 青色无敌胶囊
 @export var capsule_magnet: PackedScene     # 紫色磁铁胶囊
 
-@export var lane_width: float = 5
+@export var lane_width: float = 4.5
 @export var spawn_interval: float = 1.5
 
 var timer: float = 0.0
