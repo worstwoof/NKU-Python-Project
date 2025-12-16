@@ -28,6 +28,8 @@ func _ready():
 	GameManager.connect("magnet_state_changed", Callable(self, "_on_magnet_changed"))
 
 func _input(event):
+	if GameManager.is_breaking_wall:
+		return 
 	# 监听按键按下的一瞬间（而不是按住）
 	if event.is_action_pressed("ui_left"):
 		change_lane(-1) # 向左换道

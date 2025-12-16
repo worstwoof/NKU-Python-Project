@@ -10,13 +10,23 @@ func _physics_process(delta):
 	
 	if global_position.z > 10:
 		queue_free()
+var is_collected: bool = false
 
 func _on_body_entered(body):
 	if body.name == "Player":
+		if is_collected or body.name != "Player":
+			return
+	
+		# 3. 立即上锁
+		is_collected = true
 		# 激活 10 秒磁铁
 		GameManager.activate_magnet(10.0)
 		
-		# 播放音效 (可选)
-		# AudioManager.play("magnet_powerup")
+		$AudioStreamPlayer.play()
+		
+		$CSGCombiner3D.visible = false
+		$CollisionShape3D.set_deferred("disabled", true)
+		#await get_tree().create_timer(1.0).timeout
+		await $AudioStreamPlayer.finished
 		
 		queue_free()

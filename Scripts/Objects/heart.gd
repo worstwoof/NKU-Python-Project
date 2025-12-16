@@ -10,9 +10,20 @@ func _physics_process(delta):
 	
 	if global_position.z > 10:
 		queue_free()
-
+var is_collected: bool = false
 func _on_body_entered(body):
 	if body.name == "Player":
+		if is_collected:
+			return
+		is_collected = true
+		
 		GameManager.change_hp(1) # 加血
 		# 播放一个治愈的音效
+		$AudioStreamPlayer.play()
+		
+		$Heart.visible = false
+		$CollisionShape3D.set_deferred("disabled", true)
+
+		#await get_tree().create_timer(1.0).timeout
+		await $AudioStreamPlayer.finished
 		queue_free()

@@ -3,6 +3,7 @@ extends Node3D
 # --- 1. 原有的引用 ---
 @export var obstacle_lock: PackedScene
 @export var obstacle_spike: PackedScene
+@export var obstacle_wall: PackedScene
 @export var coin_blue: PackedScene
 @export var coin_red: PackedScene
 @export var capsule_heart: PackedScene
@@ -41,10 +42,13 @@ func spawn_random_object():
 		# 30% 红锁 (必须躲，不能跳)
 		instance = obstacle_lock.instantiate()
 		
-	elif rand_val < 0.50: 
+	elif rand_val < 0.40:
 		# 20% 尖刺地雷 (建议跳跃)
 		instance = obstacle_spike.instantiate()
 		is_combo = true # 标记为组合，准备生成头顶金币
+
+	elif rand_val < 0.50:
+		instance = obstacle_wall.instantiate()
 		
 	elif rand_val < 0.80:
 		# 30% 蓝币 (普通)
@@ -60,10 +64,13 @@ func spawn_random_object():
 	else:
 		# 5% 道具
 		# 道具通常放在地面比较稳妥，或者低空
-		if randf() > 0.5:
+		rand_val = randf()
+		if rand_val < 0.2:
 			instance = capsule_invincible.instantiate()
-		else:
+		elif rand_val < 0.4:
 			instance = capsule_magnet.instantiate()
+		else:
+			instance = capsule_heart.instantiate()
 
 	# --- 1. 生成主体 ---
 	if instance:

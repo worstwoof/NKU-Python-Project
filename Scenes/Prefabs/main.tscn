@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dl6qr0qjj3k37" path="res://Scenes/Prefabs/obstacle_spike.tscn" id="4_7y4ci"]
 [ext_resource type="PackedScene" uid="uid://bu1y4l2i8tgk2" path="res://Scenes/Prefabs/coin_red.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://cxfrpx7lsc6sg" path="res://Scenes/Prefabs/obstacle_lock.tscn" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dkx30p0exn6pn" path="res://Scenes/Prefabs/obstacle_wall.tscn" id="5_fuyq5"]
 [ext_resource type="PackedScene" uid="uid://oet71gck2iub" path="res://Scenes/Prefabs/electric_bar_strong.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://cqg2nitxqcbi2" path="res://Scenes/Prefabs/heart.tscn" id="7_ow1sv"]
 [ext_resource type="PackedScene" uid="uid://coc2cu4f47ex" path="res://Scenes/Prefabs/electric_bar_gravitate.tscn" id="8_75buv"]
@@ -57,6 +58,7 @@ environment = SubResource("Environment_1bvp3")
 script = ExtResource("11_efxa6")
 obstacle_lock = ExtResource("5_5vw27")
 obstacle_spike = ExtResource("4_7y4ci")
+obstacle_wall = ExtResource("5_fuyq5")
 coin_blue = ExtResource("3_7mycd")
 coin_red = ExtResource("4_272bh")
 capsule_heart = ExtResource("7_ow1sv")
