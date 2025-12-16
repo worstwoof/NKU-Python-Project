@@ -1,23 +1,90 @@
-[gd_scene load_steps=6 format=3 uid="uid://w6rfodafif6c"]
+[gd_scene load_steps=22 format=3 uid="uid://w6rfodafif6c"]
 
-[ext_resource type="Script" uid="uid://8rdi1cwrqhto" path="res://Scripts/character_body.gd" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://bfwx4h6vgoevx" path="res://Scripts/magnetzone.gd" id="2_y8w33"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+[ext_resource type="Script" uid="uid://8rdi1cwrqhto" path="res://Scripts/Player/character_body.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bfwx4h6vgoevx" path="res://Scripts/Objects/magnetzone.gd" id="2_y8w33"]
+[ext_resource type="PackedScene" uid="uid://cpi3ogngemkrk" path="res://Assets/Models/Character/godzilla_model_final.glb" id="3_v1l4e"]
+[ext_resource type="Script" uid="uid://dbrlh6qogla2b" path="res://Scripts/Player/animation_tree.gd" id="4_0ctox"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2yge"]
+size = Vector3(1.4886017, 2.2684326, 1.6992188)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kelma"]
 radius = 3.0
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ctox"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cb7df"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v34u6"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ak25i"]
+graph_offset = Vector2(-656, -56)
+nodes/jump/node = SubResource("AnimationNodeAnimation_v34u6")
+nodes/jump/position = Vector2(-280, 140)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_cb7df")
+nodes/TimeScale/position = Vector2(-30.141193, 213.72847)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"jump"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fdt7q"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k7ict"]
+animation = &"running"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_68wta"]
+nodes/output/position = Vector2(980, 240)
+nodes/running/node = SubResource("AnimationNodeAnimation_k7ict")
+nodes/running/position = Vector2(624.74475, 224.6889)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fdt7q")
+nodes/TimeScale/position = Vector2(785.0411, 306.89215)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"running"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8ttq"]
+advance_mode = 2
+advance_expression = "moving_speed>0
+"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ofsyp"]
+advance_mode = 2
+advance_expression = "is_on_floor_state==false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mhr4y"]
+advance_mode = 2
+advance_expression = "moving_speed==0 and is_on_floor_state==true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qapsg"]
+advance_mode = 2
+advance_expression = "is_on_floor_state==false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eejau"]
+advance_mode = 2
+advance_expression = "moving_speed==0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rc3i2"]
+advance_mode = 2
+advance_expression = "moving_speed>0 and is_on_floor_state==true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ultsi"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_823f0"]
+states/End/position = Vector2(876, 133)
+states/Start/position = Vector2(217, 138)
+states/idle/node = SubResource("AnimationNodeAnimation_0ctox")
+states/idle/position = Vector2(372, 138)
+states/jump/node = SubResource("AnimationNodeBlendTree_ak25i")
+states/jump/position = Vector2(496, 248)
+states/running/node = SubResource("AnimationNodeBlendTree_68wta")
+states/running/position = Vector2(627, 138)
+transitions = ["idle", "running", SubResource("AnimationNodeStateMachineTransition_b8ttq"), "running", "jump", SubResource("AnimationNodeStateMachineTransition_ofsyp"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_mhr4y"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_qapsg"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_eejau"), "jump", "running", SubResource("AnimationNodeStateMachineTransition_rc3i2"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ultsi")]
+graph_offset = Vector2(-172, -5)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4flbx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.6733419, 0, 0, 0, 1.6733419, 0, 0, 0, 1.6733419, 0, 0, 0)
-mesh = SubResource("BoxMesh_0xm2m")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.061958313, 0.6342163, -0.34960938)
 shape = SubResource("BoxShape3D_h2yge")
 
 [node name="MagnetZone" type="Area3D" parent="."]
@@ -26,3 +93,34 @@ script = ExtResource("2_y8w33")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MagnetZone"]
 shape = SubResource("SphereShape3D_kelma")
+
+[node name="godzilla_model_final" parent="." instance=ExtResource("3_v1l4e")]
+transform = Transform3D(-4, 0, -3.496911e-07, 0, 4, 0, 3.496911e-07, 0, -4, 0, -0.52817774, 0)
+
+[node name="Skeleton3D" parent="godzilla_model_final/骨架" index="0"]
+bones/1/rotation = Quaternion(0.097202845, 0.92095953, -0.32891864, -0.18492612)
+bones/2/rotation = Quaternion(-0.008096734, 0.97856504, 0.0678276, 0.19427945)
+bones/3/rotation = Quaternion(0.32262424, 0.027073804, 0.084925495, 0.9423207)
+bones/4/rotation = Quaternion(0.14719911, -0.041472234, 0.01697326, 0.9880913)
+bones/5/position = Vector3(-0.14981247, 0.026763242, 0.032342862)
+bones/5/rotation = Quaternion(0.6632132, -0.24476586, 0.19195835, 0.6807275)
+bones/6/rotation = Quaternion(-0.36493638, 0.055075254, -0.11057365, 0.922801)
+bones/7/position = Vector3(0.06559721, 0.0148796, 0.12264213)
+bones/7/rotation = Quaternion(0.6974086, -0.07108845, 0.044675823, 0.7117385)
+bones/8/rotation = Quaternion(-0.3649363, -0.05507516, 0.110573575, 0.9228011)
+bones/9/rotation = Quaternion(0.8687413, -0.0054549235, -0.046681978, 0.4930311)
+bones/10/rotation = Quaternion(0.04073721, -0.025650244, -0.015947063, 0.9987133)
+bones/11/rotation = Quaternion(0.56191367, 0.6591524, 0.3345095, -0.37131494)
+bones/13/rotation = Quaternion(0.14950751, -0.16386934, -0.4806209, 0.84840906)
+bones/15/rotation = Quaternion(-0.6654706, -0.12705399, 0.13498212, 0.72303945)
+bones/16/rotation = Quaternion(0.17487955, 0.17413473, 0.4902469, 0.83591413)
+
+[node name="AnimationTree" type="AnimationTree" parent="godzilla_model_final"]
+reset_on_save = false
+tree_root = SubResource("AnimationNodeStateMachine_823f0")
+anim_player = NodePath("../AnimationPlayer")
+parameters/jump/TimeScale/scale = 5.0
+parameters/running/TimeScale/scale = 3.0
+script = ExtResource("4_0ctox")
+
+[editable path="godzilla_model_final"]

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 # --- 配置参数 ---
 const LANE_WIDTH = 3.5  # 跑道宽度：每条道间隔2米（要和生成器保持一致）
-const LERP_SPEED = 10.0 # 换道的平滑速度（越大越快）
+@export var LERP_SPEED = 10.0 # 换道的平滑速度（越大越快）
 
 # --- 状态变量 ---
 var current_lane: int = 0  # 当前跑道索引：-1(左), 0(中), 1(右)
@@ -11,9 +11,9 @@ var target_x: float = 0.0  # 目标X坐标
 @onready var shield_mesh = $ShieldMesh 
 
 # --- 新增：跳跃参数 ---
-const JUMP_VELOCITY = 25 # 跳跃力度 (根据手感微调)
+@export var JUMP_VELOCITY = 25 # 跳跃力度 (根据手感微调)
 # 获取 Godot 全局设置的重力值 (默认是 9.8)
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 10 # 乘2会让下落更快，手感更干脆
+@export var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 10 # 乘2会让下落更快，手感更干脆
 
 func _ready():
 	update_target_pos()

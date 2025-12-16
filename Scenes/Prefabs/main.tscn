@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://uv42wun4nuoy"]
+[gd_scene load_steps=19 format=3 uid="uid://uv42wun4nuoy"]
 
 [ext_resource type="PackedScene" uid="uid://w6rfodafif6c" path="res://Scenes/Prefabs/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c0r6yt8el0chu" path="res://Scenes/Prefabs/coin_blue.tscn" id="3_7mycd"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bmpl3hgi36uxd" path="res://Scenes/Prefabs/road_chunk.tscn" id="13_0sxm5"]
 [ext_resource type="PackedScene" uid="uid://cmj53wi8mdk0h" path="res://Scenes/Prefabs/road_chunk_gap.tscn" id="13_rwmmg"]
 [ext_resource type="PackedScene" uid="uid://153jw1yaqra0" path="res://Scenes/Prefabs/road_chunk_gap_head.tscn" id="14_fuyq5"]
+[ext_resource type="Script" uid="uid://cw62q40bl2mc5" path="res://Scripts/Global/GameManager.gd" id="15_fuyq5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efxa6"]
 transparency = 1
@@ -71,3 +72,10 @@ script = ExtResource("11_cyiub")
 road_chunk_scene = ExtResource("13_0sxm5")
 road_chunk_gap = ExtResource("13_rwmmg")
 road_chunk_gap_head = ExtResource("14_fuyq5")
+
+[node name="GameManager" type="Node3D" parent="."]
+script = ExtResource("15_fuyq5")
+acceleration = null
+max_game_speed = null
+max_hp = null
+base_speed = null
