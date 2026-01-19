@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyd0kmdfconlf"]
+
+[ext_resource type="Script" uid="uid://c0khj5cqaf66l" path="res://Scripts/Global/splash.gd" id="1_lkt0d"]
+[ext_resource type="Texture2D" uid="uid://cjdvc5ufie7ky" path="res://Assets/软件图标.png" id="2_n7mvo"]
+
+[node name="Splash_tscn" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lkt0d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2021.0
+offset_bottom = 1238.0
+color = Color(0, 0, 0, 1)
+
+[node name="AmbientLight" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_n7mvo")
+expand_mode = 1

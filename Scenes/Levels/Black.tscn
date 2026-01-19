@@ -1,0 +1,204 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxradqn2o1i4b"]
+
+[ext_resource type="FontFile" uid="uid://c8uwqxchjkba1" path="res://Assets/Bring Race.otf" id="1_c4yr0"]
+[ext_resource type="Script" uid="uid://c0khj5cqaf66l" path="res://Scripts/Global/splash.gd" id="1_o175i"]
+[ext_resource type="Texture2D" uid="uid://cjdvc5ufie7ky" path="res://Assets/软件图标.png" id="1_qr14l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+resource_name = "black_button_hover"
+bg_color = Color(0.3, 0.3, 0.3, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+resource_name = "black_button_normal"
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.5, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3"]
+resource_name = "black_button_pressed"
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.7, 0.7, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_1"]
+Button/styles/focus = SubResource("StyleBoxFlat_2")
+Button/styles/hover = SubResource("StyleBoxFlat_2")
+Button/styles/normal = SubResource("StyleBoxFlat_1")
+Button/styles/pressed = SubResource("StyleBoxFlat_3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o175i"]
+bg_color = Color(0.12941177, 0.2784314, 0.29803923, 0.8784314)
+border_color = Color(0, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4yr0"]
+bg_color = Color(0.2574109, 0.49340248, 0.5246355, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[node name="MainMenu2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o175i")
+game_scene_path = "uid://uv42wun4nuoy"
+
+[node name="AmbientLight" type="TextureRect" parent="."]
+modulate = Color(0.5449743, 0.54497427, 0.54497427, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_qr14l")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainContainer" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/MainContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -250.0
+offset_right = 200.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 0.8)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_c4yr0")
+theme_override_font_sizes/font_size = 150
+text = "CYBER SMASH	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="UI/MainContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.5
+offset_top = -46.0
+offset_right = 531.5
+offset_bottom = 379.70874
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1")
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="HostGameBtn" type="Button" parent="UI/MainContainer/MenuButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_c4yr0")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_o175i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4yr0")
+text = "PLAY GAME"
+
+[node name="VSeparator2" type="VSeparator" parent="UI/MainContainer/MenuButtons"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HostGameBtn3" type="Button" parent="UI/MainContainer/MenuButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_c4yr0")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_o175i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4yr0")
+text = "OPTIONS"
+
+[node name="VSeparator" type="VSeparator" parent="UI/MainContainer/MenuButtons"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="HostGameBtn2" type="Button" parent="UI/MainContainer/MenuButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_c4yr0")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_o175i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4yr0")
+text = "QUIT"
+
+[node name="VersionLabel" type="Label" parent="UI/MainContainer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -25.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 0.8)
+theme_override_font_sizes/font_size = 10
+text = "v1.0.0 - Made by Yanel"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="UI/MainContainer/MenuButtons/HostGameBtn" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/MainContainer/MenuButtons/HostGameBtn2" to="." method="_on_quit_pressed"]

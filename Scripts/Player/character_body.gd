@@ -98,25 +98,25 @@ func handle_ai_input(msg: String):
 func try_jump():
 	if is_on_floor():
 		velocity.y = JUMP_VELOCITY
-#func _input(event):
+func _input(event):
 	## 监听按键按下的一瞬间（而不是按住）
-	#if event.is_action_pressed("ui_left"):
-		#change_lane(-1) # 向左换道
-	#elif event.is_action_pressed("ui_right"):
-		#change_lane(1)  # 向右换道
+	if event.is_action_pressed("ui_left"):
+		change_lane(-1) # 向左换道
+	elif event.is_action_pressed("ui_right"):
+		change_lane(1)  # 向右换道
 
 # 修改一下你原来的 change_lane，为了支持绝对位置跳转
 func change_lane_to(target_lane_index: int):
 	current_lane = target_lane_index
 	update_target_pos()
-#func change_lane(direction: int):
+func change_lane(direction: int):
 	## 计算新跑道
-	#var new_lane = current_lane + direction
+	var new_lane = current_lane + direction
 	#
 	## 限制范围在 -1 到 1 之间 (左、中、右)
-	#if new_lane >= -1 and new_lane <= 1:
-		#current_lane = new_lane
-		#update_target_pos()
+	if new_lane >= -1 and new_lane <= 1:
+		current_lane = new_lane
+		update_target_pos()
 
 func update_target_pos():
 	# 根据跑道索引计算世界坐标 X
