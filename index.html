@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Smash: Godzilla Edition</title>
+    <!-- 引入科技感字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 背景电路纹理 -->
+    <div class="circuit-bg"></div>
+    <!-- 背景幻灯片容器 -->
+<div class="slideshow-bg">
+    <!-- 这里的 style 里的路径回头替换成你的截图文件名 -->
+    <div class="slide" style="background-image: url('background1.png');"></div> 
+    <div class="slide" style="background-image: url('background2.png');"></div> 
+    <div class="slide" style="background-image: url('background3.png');"></div> 
+    <!-- 遮罩层：用于统一虚化和暗化，让文字更清晰 -->
+    <div class="slideshow-overlay"></div>
+</div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <!-- 左侧 LOGO (绝对定位在左边) -->
+        <div class="logo">CYBER SMASH</div>
+        
+        <!-- 中间菜单 (自动居中) -->
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#gameplay">玩法</a></li>
+            <li><a href="#features">游戏特色</a></li>
+            <li><a href="#team">开发团队</a></li>
+            <li><a href="#download">下载&游玩指南</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. 英雄区域 (Hero Section) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">CYBER SMASH:<br><span class="text-gradient">GODZILLA RAMPAGE</span></h1>
+            <h2 class="hero-subtitle">手势控制 · 体素世界 · 跑酷破坏</h2>
+            <p class="hero-desc">化身霓虹体素哥斯拉，利用 MediaPipe 动捕技术，挥动双手粉碎一切防火墙，冲冲冲！</p>
+            <div class="hero-btns">
+               <a href="#" class="btn btn-primary" style="text-decoration:none; text-align:center;">
+                    观看游戏演示视频
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- 📷 【替换点 1】: 首页大图 -->
+            <div class="image-placeholder neon-border">
+                <img src="gsl&wall.jpg" alt="Godzilla Smashing">
+                <div class="scanline"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 游戏特色 (Features) -->
+    <section id="features" class="section-container">
+        <!-- 统一标题样式 -->
+        <h2 class="section-title">游戏特色</h2>
+        
+        <div class="cards-grid">
+            <!-- 特色 1 -->
+            <div class="card">
+                <div class="card-icon">✋</div>
+                <h3>AI 手势控制</h3>
+                <p>无需手柄！基于Python&MediaPipe，挥动你的双手控制哥斯拉左右及跳跃，体验真实的操控感。</p>
+            </div>
+
+            <!-- 特色 2 -->
+            <div class="card">
+                <!-- 📷 【替换点 2】: 你的透明底哥斯拉图片 -->
+                <div class="card-icon custom-model-icon">
+                    <img src="哥斯拉.png" alt="Custom Godzilla">
+                </div>
+                <h3>原创体素哥斯拉</h3>
+                <p>由Jankin-Chen123手工打造的高精度体素建模，是独一无二的赛博怪兽。</p>
+            </div>
+
+            <!-- 特色 3 -->
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>极速无尽跑酷</h3>
+                <p>哥斯拉狂奔于霓虹赛道与赛博大厦间，注意他会跑得越来越快！</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 游戏玩法 (Gameplay) -->
+    <section id="gameplay" class="game-area">
+        <div class="game-frame neon-border-box">
+            <div class="game-overlay">
+                <h3>准备好觉醒怪兽本能了吗？</h3>
+                <p>请确保摄像头已连接以开启体感控制</p>
+                <a href="#download" class="btn btn-danger" style="text-decoration:none;">
+        立即下载体验
+    </a>
+            </div>
+            <!-- 📷 【替换点 3】: 游戏运行截图 -->
+            <img src="gameplay.png" class="bg-img" alt="Gameplay">
+        </div>
+        <div class="controls-guide">
+            <h4>🎮 注意事项</h4>
+            <ul>
+                <li><span>📷</span> ①开启摄像头权限</li>
+                <li><span>👋</span> ②手势操控，左右移动&向上跳跃</li>
+                <li><span>⌨️</span> ③Esc暂停休息</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 4. 开发团队 (Team) -->
+    <section id="team" class="section-container">
+        <h2 class="section-title">开发团队</h2>
+        
+        <div class="team-grid">
+            <!-- 成员 1 -->
+            <div class="team-card color-cyan">
+                <div class="team-avatar">
+                    <!-- 📷 【替换点 4】: 成员头像 -->
+                    <img src="worstwoof.jpg" alt="worstwoof">
+                </div>
+                <h4>worstwoof</h4>
+                <h5>赛道工程师</h5>
+                <p>负责跑酷赛道的搭建与逻辑合并，构建平滑的奔跑体验（但是有断桥记得跳过去）。</p>
+                <div class="tech-tags">
+                    <span>TRACK</span>
+                    <span>BRIDGE</span>
+                </div>
+            </div>
+
+            <!-- 成员 2 -->
+            <div class="team-card color-pink">
+                <div class="team-avatar">
+                    <img src="JadeAndStone.jpg" alt="JadeAndStone">
+                </div>
+                <h4>JadeAndStone</h4>
+                <h5>核心逻辑 & 音效师</h5>
+                <p>掌控跑酷核心算法逻辑，并设计沉浸式游戏音效，注入听觉灵魂。</p>
+                <div class="tech-tags">
+                    <span>CORE</span>
+                    <span>SFX</span>
+                </div>
+            </div>
+
+            <!-- 成员 3 -->
+            <div class="team-card color-orange">
+                <div class="team-avatar">
+                    <img src="Jankin-Chen123.jpg" alt="Jankin-Chen123">
+                </div>
+                <h4>Jankin-Chen123</h4>
+                <h5>3D怪兽建模师</h5>
+                <p>负责哥斯拉的高精度体素建模与骨骼绑定，手搓栩栩如生的哥斯拉。</p>
+                <div class="tech-tags">
+                    <span>VOXEL</span>
+                    <span>MODELING</span>
+                </div>
+            </div>
+
+            <!-- 成员 4 -->
+            <div class="team-card color-green">
+                <div class="team-avatar">
+                    <img src="6k36.png" alt="6k36">
+                </div>
+                <h4>6k36</h4>
+                <h5>划水建筑师（bushi</h5>
+                <p>搭建赛博大楼和您所看到的这个小网页</p>
+                <div class="tech-tags">
+                    <span>WEB</span>
+                    <span>CYBERCITY</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 下载 & 使用指南区域 (整合版) -->
+    <section id="download" class="download-section section-container">
+        <h2 class="section-title">下载&游玩指南</h2>
+        
+        <div class="download-grid">
+            <!-- 左侧：下载卡片 -->
+            <div class="download-card">
+                <div class="card-header">
+                    <span class="file-icon">📦</span>
+                    <h3>CyberSmash.zip</h3>
+                </div>
+                <div class="file-list-box">
+                    <h4>压缩包内包含：</h4>
+                    <ul>
+                        <li><span class="cyan">●</span> CyberSmash.exe <small>(游戏主程序)</small></li>
+                        <li><span class="cyan">●</span> hand_controller.py <small>(Python手势控制器)</small></li>
+                        <li><span class="cyan">●</span> CyberSmash.pck <small>(核心资源数据)</small></li>
+                        <li><span class="cyan">●</span> CyberSmash.console <small>(控制台调试器)</small></li>
+                    </ul>
+                </div>
+                <!-- 【链接替换点：指向你的总压缩包】 -->
+                <a href="CyberSmash.zip" download class="dl-btn-hero">
+                    立即下载游戏
+                </a>
+                <p class="git-link">想看代码？访问 <a href="https://github.com/worstwoof/NKU-Python-Project" target="_blank">GitHub 仓库</a></p>
+            </div>
+
+            <!-- 右侧：步骤说明（终端风格） -->
+            <div class="terminal-guide">
+                <div class="terminal-header">
+                    <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+                    <span class="title">Quick_Start_Guide.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="step">
+                        <span class="step-num">01</span>
+                        <p><span class="cmd">解压</span> 获取文件包，确保 <code>.exe</code> 与 <code>.pck</code> 在同一目录下。</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">02</span>
+                        <p><span class="cmd">pip install</span> 运行前请确保已安装所需环境：<br>
+                        <code>mediapipe opencv-python</code></p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">03</span>
+                        <p><span class="cmd">Python</span> 运行 <code>hand_controller.py</code> 开启手势捕捉。</p>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">04</span>
+                        <p><span class="cmd">开始游戏</span> 直接双击运行 <code>CyberSmash.exe</code> 开启赛博城市跑酷之旅！</p>
+                    </div>
+                    <div class="warning-tag">
+                        ⚠️ 注意：手势控制器必须先于游戏开启并在游戏运行中保持开启。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 CYBER SMASH DEV TEAM. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+</body>
+</html>
