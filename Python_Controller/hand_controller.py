@@ -2,6 +2,7 @@ import cv2
 import mediapipe as mp
 import socket
 import tkinter as tk
+
 # --- 核心配置 ---
 UDP_IP = "127.0.0.1"
 UDP_PORT = 4242
