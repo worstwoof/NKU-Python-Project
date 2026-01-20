@@ -11,13 +11,21 @@ config_version=5
 [application]
 
 config/name="CyberSmash"
-run/main_scene="uid://uv42wun4nuoy"
+run/main_scene="uid://cxradqn2o1i4b"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/image="uid://cjdvc5ufie7ky"
 config/icon="res://icon.svg"
+run/size/viewport_width=2000
+run/size/viewport_height=1200
 
 [autoload]
 
 GameManager="*res://Scripts/Global/GameManager.gd"
+
+[display]
+
+window/size/viewport_width=2021
+window/size/viewport_height=1238
 
 [rendering]
 

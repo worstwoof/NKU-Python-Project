@@ -1,24 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://c56woryvo7dni"]
+[gd_scene load_steps=11 format=3 uid="uid://c56woryvo7dni"]
 
 [ext_resource type="Script" uid="uid://bwr5ohusrfwcl" path="res://Scripts/Objects/hud.gd" id="1_k5de2"]
+[ext_resource type="FontFile" uid="uid://b2w6d11kb2i7d" path="res://Assets/Orbitron-VariableFont_wght.ttf" id="2_gp6qd"]
 [ext_resource type="AudioStream" uid="uid://ccapaeipgo5h7" path="res://Assets/Audio/game_over.ogg" id="2_pnec5"]
+[ext_resource type="FontFile" uid="uid://c8uwqxchjkba1" path="res://Assets/Bring Race.otf" id="2_t410l"]
+[ext_resource type="FontFile" uid="uid://b7qgvlw45hogw" path="res://Assets/paladins.ttf" id="3_fc6go"]
 [ext_resource type="AudioStream" uid="uid://dyd6ckbx4y274" path="res://Assets/Audio/BGM.mp3" id="3_vr7ba"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_dg77c"]
-color = Color(0.5803922, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_t410l"]
+font = ExtResource("3_fc6go")
+font_size = 50
+outline_size = 2
+outline_color = Color(1, 0.84313726, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr7ba"]
 bg_color = Color(1, 0, 0.23529412, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_fc6go"]
+font = ExtResource("2_t410l")
+font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_0apqc"]
-font_size = 50
+font = ExtResource("3_fc6go")
+font_size = 100
 shadow_color = Color(1, 0.84313726, 0, 1)
 shadow_offset = Vector2(2, 2)
-
-[sub_resource type="LabelSettings" id="LabelSettings_t410l"]
-font_size = 22
-outline_size = 2
-outline_color = Color(1, 0.84313726, 0, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -29,21 +39,32 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k5de2")
 
+[node name="FadeOverlay" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="SpeedLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 60.0
-offset_right = 60.0
-offset_bottom = 83.0
+offset_left = 912.0
+offset_top = 133.0
+offset_right = 1136.0
+offset_bottom = 161.0
 tooltip_text = "DATA FLOW: 10.0 MB/s"
+label_settings = SubResource("LabelSettings_t410l")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 320.0
-offset_bottom = 50.0
-theme_override_styles/background = SubResource("StyleBoxLine_dg77c")
+offset_left = 42.0
+offset_top = 41.0
+offset_right = 406.0
+offset_bottom = 88.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_vr7ba")
 max_value = 3.0
 step = 1.0
@@ -52,7 +73,6 @@ show_percentage = false
 
 [node name="GameOverPanel" type="Panel" parent="."]
 process_mode = 2
-visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -71,7 +91,7 @@ offset_top = -11.5
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "SYSTEM FAILURE"
+label_settings = SubResource("LabelSettings_fc6go")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -86,6 +106,8 @@ offset_top = 20.0
 offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_t410l")
+theme_override_font_sizes/font_size = 80
 text = "REBOOT SYSTEM"
 metadata/_edit_use_anchors_ = true
 
@@ -99,16 +121,19 @@ offset_top = 10.0
 offset_right = 20.0
 offset_bottom = 33.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_gp6qd")
+theme_override_font_sizes/font_size = 50
 text = "SCORE: 0"
 label_settings = SubResource("LabelSettings_0apqc")
 horizontal_alignment = 1
 
 [node name="DistanceLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 507.0
-offset_top = 83.0
-offset_right = 643.0
-offset_bottom = 114.0
+offset_left = 319.0
+offset_top = 133.0
+offset_right = 811.0
+offset_bottom = 184.0
+theme_override_fonts/font = ExtResource("2_gp6qd")
 text = "DIST: 0000 m"
 label_settings = SubResource("LabelSettings_t410l")
 
