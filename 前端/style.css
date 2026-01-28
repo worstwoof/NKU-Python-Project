@@ -1,26 +1,69 @@
 /* =========================================
    1. 基础设置与变量 (Variables & Reset)
    ========================================= */
+@font-face {
+    font-family: 'Bring Race';
+    src: url('Orbitron-VariableFont_wght.otf') format('opentype'); /* 确保文件名正确 */
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
+    /* 核心颜色变量 */
     --bg-color: #050510;
     --neon-cyan: #00f3ff;
     --neon-pink: #bc13fe;
     --neon-orange: #ff9f00;
     --neon-green: #0aff0a;
     --text-main: #ffffff;
-    --font-head: 'Orbitron', sans-serif;
+    
+    /* 字体变量 */
+    --font-head: 'Bring Race', 'Orbitron', sans-serif; 
     --font-body: 'Rajdhani', sans-serif;
+    
+    /* 面板与玻璃特效变量 */
+    --panel-bg: rgba(10, 10, 25, 0.85); 
+    --glass-blur: blur(12px);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    /* 1. 开启 Y 轴强制捕捉 (全屏滚动) */
+    scroll-snap-type: y mandatory;
+    /* 2. 平滑滚动效果 */
+    scroll-behavior: smooth;
+    /* 3. 限制高度 */
+    height: 100%;
+    overflow-x: hidden;
+    /* 4. 捕捉偏移量 (防止被导航栏挡住) */
+    scroll-padding-top: 100px;
+}
 
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: var(--font-body);
     overflow-x: hidden;
+    line-height: 1.6;
+    height: 100%;
+    /* 全屏滚动模式下，body不需要padding，由section内部控制 */
+    padding-top: 0; 
 }
 
+/* 进阶优化：赛博滚动条 */
+::-webkit-scrollbar { width: 10px; background: #050510; }
+::-webkit-scrollbar-thumb {
+    background: var(--neon-cyan);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+::-webkit-scrollbar-thumb:hover { background: #fff; }
+::selection { background: var(--neon-pink); color: #fff; text-shadow: 0 0 5px var(--neon-pink); }
+
+/* =========================================
+   2. 背景与纹理 (Backgrounds)
+   ========================================= */
 /* 电路背景纹理 */
 .circuit-bg {
     position: fixed;
@@ -30,204 +73,203 @@ body {
         linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
     z-index: -1;
+    pointer-events: none;
+    opacity: 0.3; /* 降低亮度，不抢戏 */
 }
 
+/* 幻灯片背景容器 */
+.slideshow-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
+    background-color: #000;
+}
+.slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    opacity: 0; filter: blur(8px);
+    transform: scale(1);
+    animation: zoomFade 18s infinite linear;
+}
+.slideshow-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.85); /* 深色遮罩 */
+    background: radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.95) 100%);
+}
+
+@keyframes zoomFade {
+    0% { opacity: 0; transform: scale(1); }
+    10% { opacity: 1; }
+    33% { opacity: 1; transform: scale(1.1); }
+    43% { opacity: 0; transform: scale(1.15); }
+    100% { opacity: 0; }
+}
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 6s; }
+.slide:nth-child(3) { animation-delay: 12s; }
+
 /* =========================================
-   2. 导航栏 (Navbar) - 已修复居中问题
+   3. 导航栏 (Navbar)
    ========================================= */
 .navbar {
-    display: flex;
-    justify-content: center; /* 核心：让子元素（nav-links）居中 */
-    align-items: center;
+    position: fixed; /* 强制固定 */
+    top: 0; left: 0; width: 100%;
+    display: flex; justify-content: center; align-items: center;
     padding: 1.5rem 5%;
-    background: rgba(5, 5, 16, 0.9);
+    background: rgba(5, 5, 16, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 243, 255, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    z-index: 9999; 
 }
 
 .logo {
-    position: absolute; /* 核心：把LOGO拔出文档流，固定在左侧 */
-    left: 5%; 
-    font-family: var(--font-head);
-    font-size: 1.5rem;
-    font-weight: 900;
+    position: absolute; left: 5%; 
+    font-family: var(--font-head); font-size: 1.5rem; font-weight: 900;
     color: var(--text-main);
     text-shadow: 0 0 10px var(--neon-cyan);
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 3.5rem; /* 增加间距，更大气 */
-}
-
+.nav-links { display: flex; list-style: none; gap: 3.5rem; }
 .nav-links a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: 0.3s;
-    font-size: 1.1rem;
+    color: var(--text-main); text-decoration: none;
+    font-weight: 700; text-transform: uppercase;
+    transition: 0.3s; font-size: 1.1rem;
+    font-family: var(--font-head); letter-spacing: 1px;
 }
-
-.nav-links a:hover {
-    color: var(--neon-cyan);
-    text-shadow: 0 0 8px var(--neon-cyan);
-}
+.nav-links a:hover { color: var(--neon-cyan); text-shadow: 0 0 8px var(--neon-cyan); }
 
 /* =========================================
-   3. 通用样式 (Global Components)
+   4. 通用组件 (Typography & UI)
    ========================================= */
-.section-container { padding: 5rem 10%; }
-
-/* 统一的赛博朋克大标题 (优化版) */
 .section-title {
-    font-family: var(--font-head);
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 4rem;
-    text-transform: uppercase;
-    color: #fff;
-    letter-spacing: 4px;
-    position: relative;
-    /* 统一的霓虹发光 */
+    font-family: var(--font-head); font-size: 2.5rem; text-align: center;
+    margin-bottom: 4rem; text-transform: uppercase; color: #fff;
+    letter-spacing: 4px; position: relative;
     text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
 }
-
-/* 标题下方的粉色装饰线 */
 .section-title::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--neon-pink);
-    margin: 15px auto 0 auto;
+    content: ''; display: block; width: 60px; height: 3px;
+    background: var(--neon-pink); margin: 15px auto 0 auto;
     box-shadow: 0 0 10px var(--neon-pink);
 }
 
 .text-gradient {
     background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
 }
 
-.highlight { color: var(--neon-cyan); }
-
-/* 按钮基础 */
+/* 按钮样式 */
 .btn {
-    padding: 0.8rem 1.5rem;
-    font-family: var(--font-head);
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    text-transform: uppercase;
+    padding: 1rem 2rem; font-family: var(--font-head); font-size: 1.2rem;
+    cursor: pointer; border: none; text-transform: uppercase;
     transition: all 0.3s ease;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
 }
-
 .btn-primary {
-    background: linear-gradient(90deg, var(--neon-cyan), #0088ff);
-    color: black;
+    background: linear-gradient(90deg, var(--neon-cyan), #0088ff); color: black; font-weight: 900;
     box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
 }
 .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 243, 255, 0.6); }
 
-.btn-outline {
-    background: transparent;
-    border: 2px solid var(--neon-pink);
-    color: var(--neon-pink);
-}
-.btn-outline:hover { background: var(--neon-pink); color: white; box-shadow: 0 0 20px var(--neon-pink); }
-
 .btn-danger {
-    background: transparent;
-    border: 2px solid var(--neon-cyan);
-    color: var(--neon-cyan);
-    font-size: 1.2rem;
-    padding: 1rem 3rem;
+    background: transparent; border: 2px solid var(--neon-cyan); color: var(--neon-cyan);
+    font-size: 1.2rem; padding: 1rem 3rem; font-weight: 900;
     box-shadow: 0 0 10px var(--neon-cyan), inset 0 0 10px var(--neon-cyan);
 }
 .btn-danger:hover { background: var(--neon-cyan); color: black; }
 
+/* 滚动显现动画 */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
 /* =========================================
-   4. 英雄区域 (Hero)
+   5. 全屏滚动板块通用设置 (Sections)
    ========================================= */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5% 8%;
-    min-height: 80vh;
+section {
+    height: 100vh; min-height: 100vh;
+    scroll-snap-align: start; scroll-snap-stop: always; /* 强制停顿 */
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 100px !important; /* 给导航栏留位 */
+    padding-left: 10%; padding-right: 10%;
+    box-sizing: border-box;
+    
+    /* 板块统一深色背景 */
+    background: rgba(5, 5, 16, 0.6);
+    backdrop-filter: blur(5px);
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.05);
 }
-.hero-content { max-width: 50%; }
-.hero-title { font-family: var(--font-head); font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; }
-.hero-subtitle { font-size: 1.2rem; letter-spacing: 2px; color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem; }
-.hero-desc { font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6; border-left: 3px solid var(--neon-orange); padding-left: 1rem; }
-.hero-btns { display: flex; gap: 1rem; }
-.hero-image { width: 45%; position: relative; }
-.image-placeholder { width: 100%; border: 2px solid var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); position: relative; overflow: hidden; }
+
+/* =========================================
+   6. 首页 (Hero)
+   ========================================= */
+#home {
+    flex-direction: row; align-items: center; justify-content: space-between;
+    background: radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(5,5,16,0.8) 100%);
+}
+.hero-content { 
+    max-width: 55%; padding: 2rem; border-radius: 10px;
+    background: rgba(0,0,0,0.4); backdrop-filter: blur(5px);
+    border-left: 5px solid var(--neon-cyan);
+}
+.hero-title { font-size: 5rem; line-height: 1; margin-bottom: 1.5rem; text-shadow: 5px 5px 0px rgba(0,0,0,0.5); }
+.hero-subtitle { font-size: 1.5rem; letter-spacing: 4px; color: var(--neon-cyan); margin-bottom: 1.5rem; text-transform: uppercase; }
+.hero-desc { font-size: 1.2rem; margin-bottom: 2.5rem; color: rgba(255,255,255,0.9); }
+
+.hero-image { width: 40%; position: relative; }
+.image-placeholder { 
+    width: 100%; border: 3px solid var(--neon-cyan); 
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.3); position: relative; overflow: hidden;
+    transform: perspective(1000px) rotateY(-10deg); transition: 0.5s;
+}
+.hero-image:hover .image-placeholder { transform: perspective(1000px) rotateY(0deg); }
 .image-placeholder img { width: 100%; display: block; }
 .scanline {
-    width: 100%; height: 100px; z-index: 10;
-    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0, 243, 255, 0.2) 50%, rgba(0,0,0,0) 100%);
-    opacity: 0.1; position: absolute; bottom: 100%; animation: scanline 4s linear infinite;
+    width: 100%; height: 20px; z-index: 10; background: rgba(0, 243, 255, 0.5);
+    position: absolute; top: 0; left: 0; animation: scan 3s linear infinite;
+    box-shadow: 0 0 10px var(--neon-cyan);
 }
-@keyframes scanline { 0% { bottom: 100%; } 100% { bottom: -100%; } }
+@keyframes scan { 0% {top: -20%; opacity: 0;} 50% {opacity: 1;} 100% {top: 120%; opacity: 0;} }
 
 /* =========================================
-   5. 游戏特色 (Features)
+   7. 游戏特色 (Features)
    ========================================= */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 .card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    padding: 2.5rem 2rem;
-    border-radius: 8px;
-    transition: 0.3s;
-    text-align: center; /* 核心：让卡片内容全部居中 */
+    background: var(--panel-bg); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 4px solid var(--neon-cyan);
+    padding: 3rem 2rem; border-radius: 8px; transition: 0.4s; text-align: center;
+    position: relative; overflow: hidden;
 }
 .card:hover {
-    border-color: var(--neon-pink);
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(188, 19, 254, 0.2);
+    transform: translateY(-10px); border-color: var(--neon-cyan);
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
 }
-.card-icon { font-size: 3rem; margin-bottom: 1rem; }
-.card h3 { font-family: var(--font-head); margin-bottom: 1rem; color: var(--neon-cyan); }
-.card p { color: rgba(255,255,255,0.8); line-height: 1.6; }
-
-/* 自制哥斯拉图片样式 */
-.custom-model-icon {
-    width: 90px; height: 90px; margin: 0 auto 1rem auto;
-    display: flex; align-items: center; justify-content: center;
-}
-.custom-model-icon img {
-    width: 100%; height: 100%; object-fit: contain;
-    filter: drop-shadow(0 0 10px var(--neon-cyan));
-    transition: transform 0.3s ease;
-}
-.card:hover .custom-model-icon img {
-    transform: scale(1.2) rotate(-5deg);
-    filter: drop-shadow(0 0 20px var(--neon-pink));
-}
+.card-icon { font-size: 3.5rem; margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+.card h3 { font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 1rem; color: #fff; }
+.card p { color: rgba(255,255,255,0.7); font-size: 1.05rem; }
+.custom-model-icon { width: 120px; height: 120px; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; }
+.custom-model-icon img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 10px var(--neon-cyan)); transition: 0.3s; }
+.card:hover .custom-model-icon img { transform: scale(1.2) rotate(-5deg); filter: drop-shadow(0 0 20px var(--neon-pink)); }
 
 /* =========================================
-   6. 游戏玩法 (Gameplay)
+   8. 游戏玩法 (Gameplay) - 增强版
    ========================================= */
-.game-area {
-    display: flex; justify-content: center; align-items: center; gap: 3rem;
-    padding: 4rem 5%; background: rgba(0,0,0,0.3);
+#gameplay {
+    flex-direction: row !important; /* 强制左右排列 */
+    align-items: center; justify-content: center; gap: 4rem;
+    /* 背景半透明 + 磨砂，保持通透 */
+    background-color: rgba(5, 5, 16, 0.6);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(0, 243, 255, 0.05);
 }
+
 .game-frame {
-    position: relative; width: 65%; border: 3px solid var(--neon-cyan);
-    border-radius: 10px; overflow: hidden; box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+    width: 65%; flex: none; height: auto;
+    border: 3px solid var(--neon-cyan); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2); position: relative;
 }
 .game-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -236,26 +278,30 @@ body {
 }
 .game-overlay h3 { font-family: var(--font-head); font-size: 2rem; margin-bottom: 1rem; color: white; }
 .bg-img { width: 100%; display: block; }
+
 .controls-guide {
-    width: 25%; border: 1px solid var(--neon-orange); padding: 1.5rem;
-    border-radius: 8px; box-shadow: 0 0 15px rgba(255, 159, 0, 0.2);
+    width: 25%; flex: none; height: auto;
+    background: var(--panel-bg); border: 1px solid var(--neon-orange);
+    padding: 2.5rem; border-radius: 8px; box-shadow: 0 0 20px rgba(255, 159, 0, 0.1);
 }
-.controls-guide h4 { color: var(--neon-orange); margin-bottom: 1rem; font-family: var(--font-head); }
-.controls-guide ul li { list-style: none; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
+.controls-guide h4 { 
+    color: var(--neon-orange); margin-bottom: 2rem; font-family: var(--font-head); 
+    font-size: 1.8rem; text-align: center; border-bottom: 2px dashed rgba(255, 159, 0, 0.5); padding-bottom: 1rem;
+}
+.controls-guide ul li { margin-bottom: 1.5rem; font-size: 1.2rem; color: #fff; font-weight: 500; display: flex; align-items: center; }
+.controls-guide ul li span { font-size: 1.5rem; margin-right: 15px; }
 
 /* =========================================
-   7. 开发团队 (Team)
+   9. 开发团队 (Team)
    ========================================= */
-.team-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;
-}
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
 .team-card {
     padding: 2rem; border-radius: 8px; border: 2px solid;
-    text-align: center; background: rgba(0,0,0,0.4);
-    display: flex; flex-direction: column;
+    text-align: center; background: rgba(0,0,0,0.4); display: flex; flex-direction: column; transition: 0.3s;
 }
+.team-card:hover { transform: translateY(-5px); background: rgba(20, 20, 40, 0.95); }
 
-/* 颜色变种 */
+/* 团队颜色 */
 .team-card.color-cyan { border-color: var(--neon-cyan); color: var(--neon-cyan); }
 .team-card.color-pink { border-color: var(--neon-pink); color: var(--neon-pink); }
 .team-card.color-orange { border-color: var(--neon-orange); color: var(--neon-orange); }
@@ -265,20 +311,15 @@ body {
 .team-card h5 { margin-bottom: 10px; font-weight: 700; opacity: 0.9; text-transform: uppercase; color: currentColor; }
 .team-card p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
 
-/* 头像样式 */
 .team-avatar {
     width: 100px; height: 100px; margin: 0 auto 1rem auto;
     border-radius: 50%; padding: 3px; border: 2px solid currentColor;
     box-shadow: 0 0 15px currentColor; transition: all 0.4s ease;
 }
-.team-avatar img {
-    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-    filter: brightness(0.95); transition: all 0.4s ease;
-}
+.team-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; filter: brightness(0.95); transition: 0.4s; }
 .team-card:hover .team-avatar { transform: scale(1.1); box-shadow: 0 0 35px currentColor; }
 .team-card:hover .team-avatar img { filter: brightness(1.2); }
 
-/* 技能标签 */
 .tech-tags { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: auto; }
 .tech-tags span {
     font-size: 0.7rem; padding: 4px 8px; border: 1px solid rgba(255,255,255,0.2);
@@ -287,242 +328,519 @@ body {
 .team-card:hover .tech-tags span { border-color: currentColor; color: #fff; box-shadow: 0 0 5px currentColor; }
 
 /* =========================================
-   8. 下载区域 (Download)
+   10. 下载区域 (Download) & 页脚
    ========================================= */
-.download-section { padding: 4rem 10%; background: linear-gradient(180deg, transparent, rgba(0, 243, 255, 0.05)); }
-
-.download-container {
-    display: flex; justify-content: center; align-items: flex-start;
-    gap: 4rem; flex-wrap: wrap; max-width: 1100px; margin: 0 auto;
+#download {
+    position: relative;
+    
+    /* 布局设置 */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    
+    /* 高度设置 */
+    height: 100vh; 
+    min-height: 100vh;
+    
+    /* 间距设置 */
+    padding-top: 140px !important;
+    padding-bottom: 200px !important; 
+    
+    /* 【核心修复】背景改回统一的半透明深色，不再使用透明渐变 */
+    background-color: rgba(5, 5, 16, 0.6); 
+    
+    /* 加上磨砂质感，和上面的板块保持一致 */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    /* 保持底部分割线 */
+    border-bottom: 1px solid rgba(0, 243, 255, 0.05);
+}
+#download .section-title, 
+#download .download-grid {
+    width: 80%; margin-left: auto; margin-right: auto;
 }
 
-.col-left, .col-right {
-    flex: 1; min-width: 300px; background: rgba(0, 0, 0, 0.4);
-    padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(0, 243, 255, 0.1);
-}
-.col-left h3, .col-right h3 {
-    margin-bottom: 1.5rem; color: var(--neon-cyan); font-family: var(--font-head); text-align: center;
-}
-
-.dl-btn {
-    display: block; width: 100%; padding: 1.2rem; margin-bottom: 1rem;
-    background: transparent; border: 2px solid; font-family: var(--font-head);
-    font-weight: 700; color: white; cursor: pointer; border-radius: 8px;
-    transition: 0.3s; text-align: center; text-decoration: none; /* 确保a标签没下划线 */
-}
-
-/* 按钮颜色变种 */
-.godot { border-color: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
-.python { border-color: var(--neon-pink); box-shadow: 0 0 10px var(--neon-pink); }
-.discord { border-color: #5865F2; }
-.github { border-color: white; }
-.youtube { border-color: #FF0000; }
-
-.godot:hover { background: var(--neon-cyan); color: black; }
-.python:hover { background: var(--neon-pink); color: white; }
-.discord:hover { background: #5865F2; color: white; }
-.github:hover { background: white; color: black; }
-.youtube:hover { background: #FF0000; color: white; }
-
-.code-box {
-    background: #111; padding: 1rem; border-radius: 4px; font-family: monospace;
-    border-left: 3px solid var(--neon-green); color: var(--neon-green); margin-top: 1rem;
-}
-
-footer {
-    text-align: center; padding: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.8rem; opacity: 0.6; margin-top: 2rem;
-}
-/* --- 背景幻灯片样式 --- */
-.slideshow-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2; /* 确保在所有内容和电路纹理下方 */
-    overflow: hidden;
-    background-color: #000; /* 防止图片加载前的空白 */
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0; /* 默认隐藏 */
-    filter: blur(8px); /* 【调节虚化程度】数字越大越模糊 */
-    transform: scale(1);
-    animation: zoomFade 18s infinite linear; /* 总时长18秒，循环播放 */
-}
-
-/* 遮罩层：让背景变暗，突出前景文字 */
-.slideshow-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* 0.4表示暗度，越大越黑 */
-    z-index: -1;
-}
-
-/* 关键帧动画：处理淡入淡出和从小变大的缩放 */
-@keyframes zoomFade {
-    0% {
-        opacity: 0;
-        transform: scale(1);
-    }
-    10% {
-        opacity: 1; /* 淡入完成 */
-    }
-    33% {
-        opacity: 1;
-        transform: scale(1.1); /* 持续变大到1.1倍 */
-    }
-    43% {
-        opacity: 0; /* 淡出完成 */
-        transform: scale(1.15);
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-/* 设置每张图片播放的延迟时间 (总长18s / 3张 = 6s间隔) */
-.slide:nth-child(1) { animation-delay: 0s; }
-.slide:nth-child(2) { animation-delay: 6s; }
-.slide:nth-child(3) { animation-delay: 12s; }
-
-/* 调整原本的电路背景透明度，让它叠在幻灯片上更和谐 */
-.circuit-bg {
-    z-index: -1;
-    opacity: 0.3; /* 降低原本纹理的亮度，让出空间给截图 */
-    pointer-events: none;
-}
-/* --- 下载区域增强样式 --- */
 .download-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
+    margin-top: auto; margin-bottom: auto; /* 垂直居中 */
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    width: 100%; padding-bottom: 4rem;
 }
 
-/* 左侧卡片 */
+/* 下载文件卡片 */
 .download-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--neon-cyan);
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--neon-cyan);
+    padding: 2.5rem; border-radius: 12px; box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+    position: relative;
 }
-
-.download-card .card-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 2rem;
-}
-
-.download-card .file-icon { font-size: 2.5rem; }
-.download-card h3 { font-family: var(--font-head); color: #fff; }
-
-.file-list-box {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-    border-left: 3px solid var(--neon-pink);
-}
-
-.file-list-box h4 { font-size: 0.9rem; opacity: 0.6; margin-bottom: 10px; text-transform: uppercase; }
-.file-list-box ul { list-style: none; }
-.file-list-box li { margin: 8px 0; font-family: monospace; font-size: 1rem; }
+.download-card h3 { font-family: var(--font-head); color: #fff; display: inline-block; margin-left: 10px;}
+.file-list-box { background: rgba(0, 0, 0, 0.3); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border-left: 3px solid var(--neon-pink); }
+.file-list-box li { list-style: none; margin: 8px 0; font-family: monospace; font-size: 1rem; color: #bbb; }
 .file-list-box .cyan { color: var(--neon-cyan); margin-right: 10px; }
-.file-list-box small { opacity: 0.5; font-size: 0.8rem; margin-left: 5px; }
-
 .dl-btn-hero {
-    display: block;
-    width: 100%;
-    padding: 1.2rem;
-    background: var(--neon-cyan);
-    color: #000;
-    text-align: center;
-    text-decoration: none;
-    font-family: var(--font-head);
-    font-weight: 900;
-    font-size: 1.2rem;
-    border-radius: 6px;
-    transition: 0.3s;
-    box-shadow: 0 0 15px var(--neon-cyan);
+    display: block; width: 100%; padding: 1.2rem; background: var(--neon-cyan); color: #000;
+    text-align: center; text-decoration: none; font-family: var(--font-head); font-weight: 900; font-size: 1.2rem;
+    border-radius: 6px; transition: 0.3s; box-shadow: 0 0 15px var(--neon-cyan);
 }
-
-.dl-btn-hero:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px var(--neon-cyan);
-    filter: brightness(1.1);
-}
-
+.dl-btn-hero:hover { transform: translateY(-3px); box-shadow: 0 0 30px var(--neon-cyan); filter: brightness(1.1); }
 .git-link { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.6; }
-.git-link a { 
-    color: var(--neon-cyan); /* 改成醒目的青色 */
-    text-decoration: none; 
-    font-weight: 700; /* 加粗一点 */
-    transition: 0.3s;
-}
+.git-link a { color: var(--neon-cyan); text-decoration: none; font-weight: 700; transition: 0.3s; }
+.git-link a:hover { color: #fff; text-shadow: 0 0 10px var(--neon-cyan); text-decoration: underline; }
 
-/* 增加鼠标移上去的效果，让它更像一个可以点击的链接 */
-.git-link a:hover {
-    color: #fff; /* 鼠标移上去变白色 */
-    text-shadow: 0 0 10px var(--neon-cyan); /* 增加发光感 */
-    text-decoration: underline; /* 增加下划线 */
-}
-
-/* 右侧终端风格说明 */
-.terminal-guide {
-    background: #0a0a1a;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #333;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-}
-
-.terminal-header {
-    background: #1a1a2a;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #333;
-}
-
+/* 终端样式 */
+.terminal-guide { background: #0a0a1a; border-radius: 10px; overflow: hidden; border: 1px solid #333; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+.terminal-header { background: #1a1a2a; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #333; }
 .terminal-header .dots { display: flex; gap: 8px; }
 .terminal-header .dots span { width: 12px; height: 12px; border-radius: 50%; }
 .terminal-header .r { background: #ff5f56; }
 .terminal-header .y { background: #ffbd2e; }
 .terminal-header .g { background: #27c93f; }
-.terminal-header .title { font-family: monospace; font-size: 0.8rem; opacity: 0.5; color: #fff; }
-
 .terminal-body { padding: 2rem; font-family: monospace; }
 .terminal-body .step { display: flex; gap: 20px; margin-bottom: 1.8rem; }
 .terminal-body .step-num { color: var(--neon-pink); font-weight: bold; font-size: 1.2rem; }
 .terminal-body .cmd { color: var(--neon-green); font-weight: bold; }
 .terminal-body code { background: #000; padding: 2px 6px; color: var(--neon-orange); border-radius: 4px; }
+.warning-tag { margin-top: 1rem; padding: 15px; background: rgba(255, 159, 0, 0.1); border: 1px dashed var(--neon-orange); color: var(--neon-orange); font-size: 0.85rem; border-radius: 6px; }
 
-.warning-tag {
-    margin-top: 1rem;
-    padding: 15px;
-    background: rgba(255, 159, 0, 0.1);
-    border: 1px dashed var(--neon-orange);
-    color: var(--neon-orange);
-    font-size: 0.85rem;
-    border-radius: 6px;
+/* 纯黑页脚 (绝对定位版) */
+footer {
+    position: absolute; left: 0; bottom: 0; width: 100%;
+    background-color: #000000; color: #ffffff;
+    text-align: center; padding: 1.5rem 0;
+    font-family: var(--font-head); font-size: 0.9rem; letter-spacing: 2px;
+    z-index: 10; border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   11. 响应式适配
+   ========================================= */
+@media (max-width: 900px) {
+    .hero { flex-direction: column; padding-top: 120px; text-align: center; }
+    .hero-content { max-width: 100%; border-left: none; border-top: 5px solid var(--neon-cyan); margin-bottom: 2rem; }
+    .hero-image { width: 100%; }
+    
+    #gameplay { flex-direction: column !important; gap: 2rem; }
+    .game-frame, .controls-guide { width: 90%; }
+    
+    .download-grid { grid-template-columns: 1fr; }
+}
+/* =========================================
+   Glitch 故障文字特效 (移植版)
+   ========================================= */
+.glitch {
+    /* 1. 默认参数变量 (对应 React 中的 inlineStyles) */
+    --after-duration: 3s;
+    --before-duration: 2s;
+    --after-shadow: -5px 0 #ff004c; /* 红色偏粉，更赛博 */
+    --before-shadow: 5px 0 #00f3ff; /* 青色 */
+    
+    /* 2. 基础字体设置 */
+    color: #fff;
+    /* font-size: inherit;  让它自动继承标题的大小 */
+    display: inline-block; /* 保证定位准确 */
+    position: relative;
+    user-select: none;
+}
+
+.glitch::after,
+.glitch::before {
+    content: attr(data-text); /* 核心：自动读取 HTML 里的文字 */
+    position: absolute;
+    top: 0;
+    color: #fff;
+    background: transparent; /* 【关键】改为透明，防止出现黑色方块遮挡背景 */
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    width: 100%;
+    height: 100%;
+}
+
+/* --- 模式 A: 自动播放动画 (默认) --- */
+.glitch:not(.enable-on-hover)::after {
+    left: 4px; /* 偏移量微调 */
+    text-shadow: var(--after-shadow);
+    animation: animate-glitch var(--after-duration) infinite linear alternate-reverse;
+}
+.glitch:not(.enable-on-hover)::before {
+    left: -4px;
+    text-shadow: var(--before-shadow);
+    animation: animate-glitch var(--before-duration) infinite linear alternate-reverse;
+}
+
+/* --- 模式 B: 鼠标悬停才播放 (.enable-on-hover) --- */
+.glitch.enable-on-hover::after,
+.glitch.enable-on-hover::before {
+    content: '';
+    opacity: 0;
+    animation: none;
+}
+
+.glitch.enable-on-hover:hover::after {
+    content: attr(data-text);
+    opacity: 1;
+    left: 4px;
+    text-shadow: var(--after-shadow);
+    animation: animate-glitch var(--after-duration) infinite linear alternate-reverse;
+}
+.glitch.enable-on-hover:hover::before {
+    content: attr(data-text);
+    opacity: 1;
+    left: -4px;
+    text-shadow: var(--before-shadow);
+    animation: animate-glitch var(--before-duration) infinite linear alternate-reverse;
+}
+
+/* --- 动画关键帧 --- */
+@keyframes animate-glitch {
+    0% { clip-path: inset(20% 0 50% 0); }
+    5% { clip-path: inset(10% 0 60% 0); }
+    10% { clip-path: inset(15% 0 55% 0); }
+    15% { clip-path: inset(25% 0 35% 0); }
+    20% { clip-path: inset(30% 0 40% 0); }
+    25% { clip-path: inset(40% 0 20% 0); }
+    30% { clip-path: inset(10% 0 60% 0); }
+    35% { clip-path: inset(15% 0 55% 0); }
+    40% { clip-path: inset(25% 0 35% 0); }
+    45% { clip-path: inset(30% 0 40% 0); }
+    50% { clip-path: inset(20% 0 50% 0); }
+    55% { clip-path: inset(10% 0 60% 0); }
+    60% { clip-path: inset(15% 0 55% 0); }
+    65% { clip-path: inset(25% 0 35% 0); }
+    70% { clip-path: inset(30% 0 40% 0); }
+    75% { clip-path: inset(40% 0 20% 0); }
+    80% { clip-path: inset(20% 0 50% 0); }
+    85% { clip-path: inset(10% 0 60% 0); }
+    90% { clip-path: inset(15% 0 55% 0); }
+    95% { clip-path: inset(25% 0 35% 0); }
+    100% { clip-path: inset(30% 0 40% 0); }
+}
+/* =========================================
+   3D 倾斜卡片特效 (原生 JS 版)
+   ========================================= */
+
+/* 卡片容器：设置透视深度 */
+.tilted-card {
+    perspective: 1000px; /* 3D 效果的深浅，数值越小越夸张 */
+    transform-style: preserve-3d;
+    position: relative;
+    /* 覆盖掉原本的一些 hover 效果，交给 JS 控制 */
+    transition: none; 
+}
+
+/* 内部容器：实际被旋转的部分 */
+.tilted-card-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* 这里的 transition 稍微设快一点，让鼠标跟随更跟手，不像原来 CSS hover 那么慢 */
+    transition: transform 0.1s ease-out; 
+    will-change: transform; /* 性能优化 */
+}
+
+/* 鼠标悬停时的状态 (由 JS 动态控制 transform，这里只控制层级) */
+.tilted-card:hover {
+    z-index: 10; /* 悬停时浮在最上面 */
+}
+
+/* 那个跟随鼠标的小标签 */
+.tilted-card-caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    background: #fff;
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-weight: bold;
+    pointer-events: none; /* 让鼠标可以穿透它点击下面的按钮 */
+    opacity: 0; /* 默认隐藏 */
+    transform: translate(0, 0);
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* 当卡片被激活时，显示标签 */
+.tilted-card:hover .tilted-card-caption {
+    opacity: 1;
+}
+/* =========================================
+   Hyperspeed 3D 背景特效
+   ========================================= */
+#lights {
+    position: fixed; /* 固定在屏幕上 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -5; /* 确保它在最底层 */
+    background: #000; /* 默认黑底 */
+}
+
+/* 覆盖 Canvas 尺寸 */
+#lights canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+/* =========================================
+   动态背景切换系统
+   ========================================= */
+
+/* 1. Hyperspeed 特效容器 (默认显示) */
+#lights {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; /* 保证它在最底层，但在幻灯片上面 */
+    background: #000;
+    
+    /* 关键：加上过渡动画，让消失过程很丝滑 */
+    opacity: 1; 
+    transition: opacity 1.5s ease-in-out;
+    pointer-events: none; /* 防止遮挡鼠标点击 */
+}
+
+/* 2. 幻灯片容器 (默认隐藏) */
+.slideshow-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2; /* 放在 Hyperspeed 下面 */
+    background-color: #000;
+    
+    /* 关键：默认设为 0，等 JS 把它叫出来 */
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out;
+}
+
+/* 3. 【开关状态】当 body 加上 .show-slideshow 类名时 */
+/* 这里的逻辑是：往下滚了 -> 加类名 -> 特效隐藏，幻灯片显示 */
+
+body.show-slideshow #lights {
+    opacity: 0; /* 特效淡出 */
+}
+
+body.show-slideshow .slideshow-bg {
+    opacity: 1; /* 幻灯片淡入 */
+}
+
+/* 幻灯片内部保持原有动画不变 */
+.slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    opacity: 0; filter: blur(8px);
+    transform: scale(1);
+    animation: zoomFade 18s infinite linear;
+}
+/* =========================================
+   PillNav 药丸导航栏 (修复版 - 加大尺寸)
+   ========================================= */
+.pill-nav-container {
+    position: fixed;
+    top: 30px; /* 距离顶部稍微远一点 */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: max-content;
+    max-width: 95%;
+}
+
+.pill-nav {
+    /* --- 核心变量调整 --- */
+    --nav-h: 60px; /* 【关键修改】高度从50改到60，给文字留足空间 */
+    --logo-size: 50px;
+    --pill-bg: rgba(10, 10, 25, 0.95);
+    --base-color: var(--neon-cyan);
+    --text-normal: #fff;
+    --text-hover: #000;
+    
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Logo和菜单之间的间距加大 */
+}
+
+/* 导航条主体 */
+.pill-nav-items {
+    height: var(--nav-h);
+    background: var(--pill-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    border-radius: 100px;
+    padding: 0 10px; /* 左右稍微留点空隙 */
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    overflow: hidden; 
+}
+
+/* 左侧 Logo 圆圈 */
+.pill-logo {
+    width: var(--nav-h); /* 跟导航栏一样高 */
+    height: var(--nav-h);
+    border-radius: 50%;
+    background: var(--pill-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: var(--font-head);
+    font-size: 1.2rem; /* Logo字体大小 */
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    flex-shrink: 0; /* 防止被挤压 */
+}
+.pill-logo:hover {
+    transform: scale(1.1) rotate(10deg);
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 15px var(--neon-pink);
+}
+
+/* 列表布局 */
+.pill-list {
+    list-style: none;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.pill-list li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* 单个药丸链接 */
+.pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 30px; /* 【关键】增加左右内边距，让按钮更宽 */
+    text-decoration: none;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.3rem; /* 【关键】字体调大 */
+    color: var(--text-normal);
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.2s;
+    white-space: nowrap; /* 强制不换行 */
+}
+
+/* 那个神奇的圆球 */
+.hover-circle {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0) scale(0);
+    border-radius: 50%;
+    background-color: var(--neon-cyan);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 文字堆叠层 */
+.label-stack {
+    position: relative;
+    z-index: 2;
+    display: flex; /* 改用Flex确保文字居中 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    line-height: 1; /* 重置行高防止撑开 */
+}
+
+.pill-label {
+    display: block;
+    padding-top: 2px; /* 微调垂直位置 */
+}
+
+.pill-label-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Flex居中 */
+    align-items: center;
+    justify-content: center;
+    color: var(--text-hover);
+    opacity: 0;
+    transform: translateY(100%);
+    padding-top: 2px;
+}
+
+/* 移动端菜单按钮 */
+.mobile-menu-button {
+    width: var(--nav-h);
+    height: var(--nav-h);
+    border-radius: 50%;
+    background: var(--pill-bg);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+/* 移动端弹窗 */
+.mobile-menu-popover {
+    position: absolute;
+    top: calc(var(--nav-h) + 15px);
+    right: 0;
+    width: 200px;
+    background: var(--pill-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 12px;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+.mobile-menu-popover.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.mobile-menu-list { list-style: none; padding: 0; margin: 0; }
+.mobile-menu-link {
+    display: block;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-head);
+    border-radius: 8px;
+    transition: 0.2s;
+    font-size: 1.1rem;
+}
+.mobile-menu-link:hover {
+    background: rgba(0, 243, 255, 0.2);
+    color: var(--neon-cyan);
 }
 
 /* 响应式 */
 @media (max-width: 900px) {
-    .download-grid { grid-template-columns: 1fr; }
+    .desktop-only { display: none; }
+    .mobile-only { display: flex; }
+    .pill-nav-container { width: 90%; left: 50%; transform: translateX(-50%); }
+    .pill-nav { width: 100%; justify-content: space-between; }
 }

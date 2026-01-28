@@ -4,44 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Smash: Godzilla Edition</title>
-    <!-- 引入科技感字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "postprocessing": "https://unpkg.com/postprocessing@6.34.0/build/index.js"
+            }
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
 
-    <!-- 背景电路纹理 -->
-    <div class="circuit-bg"></div>
-    <!-- 背景幻灯片容器 -->
-<div class="slideshow-bg">
-    <!-- 这里的 style 里的路径回头替换成你的截图文件名 -->
-    <div class="slide" style="background-image: url('background1.png');"></div> 
-    <div class="slide" style="background-image: url('background2.png');"></div> 
-    <div class="slide" style="background-image: url('background3.png');"></div> 
-    <!-- 遮罩层：用于统一虚化和暗化，让文字更清晰 -->
-    <div class="slideshow-overlay"></div>
-</div>
+    <div id="lights"></div>
 
+    <div class="slideshow-bg">
+        <div class="slide" style="background-image: url('background1.png');"></div> 
+        <div class="slide" style="background-image: url('background2.png');"></div> 
+        <div class="slide" style="background-image: url('background3.png');"></div> 
+        <div class="slideshow-overlay"></div>
+    </div>
     <!-- 导航栏 -->
-    <nav class="navbar">
-        <!-- 左侧 LOGO (绝对定位在左边) -->
-        <div class="logo">CYBER SMASH</div>
-        
-        <!-- 中间菜单 (自动居中) -->
-        <ul class="nav-links">
-            <li><a href="#home">首页</a></li>
-            <li><a href="#gameplay">玩法</a></li>
-            <li><a href="#features">游戏特色</a></li>
-            <li><a href="#team">开发团队</a></li>
-            <li><a href="#download">下载&游玩指南</a></li>
-        </ul>
+    <div class="pill-nav-container">
+    <nav class="pill-nav">
+        <a class="pill-logo" href="#home" aria-label="Home">
+            <span style="font-weight:900; color:#fff;">CS</span>
+        </a>
+
+        <div class="pill-nav-items desktop-only">
+            <ul class="pill-list">
+                <li>
+                    <a href="#home" class="pill">
+                        <span class="hover-circle"></span>
+                        <span class="label-stack">
+                            <span class="pill-label">首页</span>
+                            <span class="pill-label-hover">首页</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#gameplay" class="pill">
+                        <span class="hover-circle"></span>
+                        <span class="label-stack">
+                            <span class="pill-label">玩法</span>
+                            <span class="pill-label-hover">玩法</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#features" class="pill">
+                        <span class="hover-circle"></span>
+                        <span class="label-stack">
+                            <span class="pill-label">特色</span>
+                            <span class="pill-label-hover">特色</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#team" class="pill">
+                        <span class="hover-circle"></span>
+                        <span class="label-stack">
+                            <span class="pill-label">团队</span>
+                            <span class="pill-label-hover">团队</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#download" class="pill">
+                        <span class="hover-circle"></span>
+                        <span class="label-stack">
+                            <span class="pill-label">下载</span>
+                            <span class="pill-label-hover">下载</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <button class="mobile-menu-button mobile-only" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
     </nav>
+
+    <div class="mobile-menu-popover">
+        <ul class="mobile-menu-list">
+            <li><a href="#home" class="mobile-menu-link">首页</a></li>
+            <li><a href="#gameplay" class="mobile-menu-link">玩法</a></li>
+            <li><a href="#features" class="mobile-menu-link">游戏特色</a></li>
+            <li><a href="#team" class="mobile-menu-link">开发团队</a></li>
+            <li><a href="#download" class="mobile-menu-link">下载指南</a></li>
+        </ul>
+    </div>
+</div>
 
     <!-- 1. 英雄区域 (Hero Section) -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">CYBER SMASH:<br><span class="text-gradient">GODZILLA RAMPAGE</span></h1>
-            <h2 class="hero-subtitle">手势控制 · 体素世界 · 跑酷破坏</h2>
+            <h1 class="hero-title">
+                <span class="glitch" data-text="CYBER SMASH">CYBER SMASH</span>:
+              
+                <span class="glitch" data-text="GODZILLA RAMPAGE">GODZILLA RAMPAGE</span>
+            </h1>
+
+            <h2 class="hero-subtitle">手势控制 · 像素世界 · 跑酷破坏</h2>
             <p class="hero-desc">化身霓虹体素哥斯拉，利用 MediaPipe 动捕技术，挥动双手粉碎一切防火墙，冲冲冲！</p>
             <div class="hero-btns">
                <a href="#" class="btn btn-primary" style="text-decoration:none; text-align:center;">
@@ -179,7 +249,7 @@
 
     <!-- 5. 下载 & 使用指南区域 (整合版) -->
     <section id="download" class="download-section section-container">
-        <h2 class="section-title">下载&游玩指南</h2>
+        <h2 class="section-title">下载游玩指南</h2>
         
         <div class="download-grid">
             <!-- 左侧：下载卡片 -->
@@ -212,33 +282,394 @@
                 </div>
                 <div class="terminal-body">
                     <div class="step">
-                        <span class="step-num">01</span>
+                        <span class="step-num">第一步</span>
                         <p><span class="cmd">解压</span> 获取文件包，确保 <code>.exe</code> 与 <code>.pck</code> 在同一目录下。</p>
                     </div>
                     <div class="step">
-                        <span class="step-num">02</span>
-                        <p><span class="cmd">pip install</span> 运行前请确保已安装所需环境：<br>
-                        <code>mediapipe opencv-python</code></p>
+                        <span class="step-num">第二步</span>
+                        <p><span class="cmd">打开文件包里的 <code>CyberSmash_V1.0</code> 文件夹<br>
+                        </p>
                     </div>
                     <div class="step">
-                        <span class="step-num">03</span>
-                        <p><span class="cmd">Python</span> 运行 <code>hand_controller.py</code> 开启手势捕捉。</p>
+                        <span class="step-num">第三步</span>
+                        <p><span class="cmd"></span> 运行 <code>Launcher.bat</code> 开启手势捕捉。</p>
                     </div>
-                    <div class="step">
-                        <span class="step-num">04</span>
-                        <p><span class="cmd">开始游戏</span> 直接双击运行 <code>CyberSmash.exe</code> 开启赛博城市跑酷之旅！</p>
-                    </div>
+                   
                     <div class="warning-tag">
-                        ⚠️ 注意：手势控制器必须先于游戏开启并在游戏运行中保持开启。
+                        ⚠️ 注意：请确保电脑摄像头权限的开启。
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+        
     <footer>
         <p>© 2024 CYBER SMASH DEV TEAM. ALL RIGHTS RESERVED.</p>
-    </footer>
+    </footer>   
+    </section>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let isScrolling = false; // 防抖锁：防止滚动过快
+    let currentSectionIndex = 0; // 当前在第几屏
+    
+    // 获取所有的板块 (Section)
+    const sections = document.querySelectorAll('section');
+    const totalSections = sections.length;
 
+    // 监听鼠标滚轮事件 (pc端)
+    window.addEventListener('wheel', (e) => {
+        // 1. 如果正在滚动中，或者在这个页面之外（比如按了F12），就不处理
+        if (isScrolling) return;
+
+        // 2. 判断滚动方向 (deltaY > 0 是向下滚， < 0 是向上滚)
+        if (e.deltaY > 0) {
+            // 向下滚：索引 +1
+            if (currentSectionIndex < totalSections - 1) {
+                currentSectionIndex++;
+                scrollToSection(currentSectionIndex);
+            }
+        } else {
+            // 向上滚：索引 -1
+            if (currentSectionIndex > 0) {
+                currentSectionIndex--;
+                scrollToSection(currentSectionIndex);
+            }
+        }
+    }, { passive: false }); // passive: false 允许我们后续可能的扩展（虽然这里主要靠逻辑控制）
+
+    // 执行滚动的核心函数
+    function scrollToSection(index) {
+        isScrolling = true; // 上锁
+        
+        // 平滑滚动到目标板块
+        sections[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+        // 设定一个冷却时间（比如 800ms），等动画播放完了解锁
+        setTimeout(() => {
+            isScrolling = false;
+        }, 800);
+    }
+    
+    // 补充：处理键盘上下键翻页 (可选)
+    window.addEventListener('keydown', (e) => {
+        if (isScrolling) return;
+        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+            e.preventDefault();
+            if (currentSectionIndex < totalSections - 1) {
+                currentSectionIndex++;
+                scrollToSection(currentSectionIndex);
+            }
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+            e.preventDefault();
+            if (currentSectionIndex > 0) {
+                currentSectionIndex--;
+                scrollToSection(currentSectionIndex);
+            }
+        }
+    });
+});
+</script>
+<script>
+    // 监听滚动事件
+    window.addEventListener('scroll', reveal);
+
+    function reveal(){
+        var reveals = document.querySelectorAll('.reveal');
+
+        for(var i = 0; i < reveals.length; i++){
+            var windowheight = window.innerHeight;
+            var revealtop = reveals[i].getBoundingClientRect().top;
+            var revealpoint = 150; // 触发高度
+
+            if(revealtop < windowheight - revealpoint){
+                reveals[i].classList.add('active');
+            }
+        }
+    }
+    
+    // 页面加载时先触发一次，保证首屏内容可见
+    reveal(); 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            // 计算目标位置，减去导航栏的高度(比如80px)
+            const headerOffset = 80; 
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.tilted-card');
+
+    cards.forEach(card => {
+        const inner = card.querySelector('.tilted-card-inner');
+        const caption = card.querySelector('.tilted-card-caption');
+
+        // 配置参数
+        const rotateAmplitude = 15; // 旋转幅度 (对应 React 里的 rotateAmplitude)
+        const scaleOnHover = 1.05;  // 悬停缩放 (对应 React 里的 scaleOnHover)
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            
+            // 计算鼠标在卡片内的坐标 (从中心点算起)
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // 计算旋转角度
+            // 鼠标在左边 -> 向左倾斜 (RotateY 负数)
+            // 鼠标在上面 -> 向上倾斜 (RotateX 正数)
+            const rotateX = ((y - centerY) / centerY) * -rotateAmplitude;
+            const rotateY = ((x - centerX) / centerX) * rotateAmplitude;
+
+            // 应用 3D 变换
+            inner.style.transform = `
+                rotateX(${rotateX}deg) 
+                rotateY(${rotateY}deg) 
+                scale(${scaleOnHover})
+            `;
+
+            // 更新悬浮文字的位置 (跟随鼠标)
+            if (caption) {
+                // 稍微偏移一点，别挡住鼠标
+                const captionX = x + 15; 
+                const captionY = y + 15;
+                caption.style.transform = `translate(${captionX}px, ${captionY}px)`;
+            }
+        });
+
+        // 鼠标移出时还原
+        card.addEventListener('mouseleave', () => {
+            inner.style.transform = `rotateX(0) rotateY(0) scale(1)`;
+            
+            // 顺便把文字也复位一下，虽然看不见
+            if (caption) {
+                caption.style.transform = `translate(0, 0)`;
+            }
+        });
+    });
+});
+
+</script>
+<script type="module" src="hyperspeed.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. 找到我们要“监视”的目标：首页 (Hero Section)
+    const heroSection = document.getElementById('home');
+    
+    // 2. 创建一个观察者 (Intersection Observer)
+    // 它的作用是：一旦首页离开屏幕超过 50%，就触发回调
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 情况 A: 首页还在屏幕里 -> 移除类名 (显示 Hyperspeed)
+                document.body.classList.remove('show-slideshow');
+            } else {
+                // 情况 B: 首页滚出去了 -> 添加类名 (显示幻灯片)
+                document.body.classList.add('show-slideshow');
+            }
+        });
+    }, {
+        threshold: 0.1 // 只要首页还有 10% 在屏幕里，就算“还在”；完全滚走才切换
+    });
+
+    // 3. 开始监视
+    if (heroSection) {
+        observer.observe(heroSection);
+    }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // ==========================================
+    // 1. PillNav 导航栏悬浮特效 (GSAP)
+    // ==========================================
+    const pills = document.querySelectorAll('.pill');
+    
+    // 初始化布局计算
+    function layoutPills() {
+        pills.forEach((pill) => {
+            const circle = pill.querySelector('.hover-circle');
+            const labelNormal = pill.querySelector('.pill-label');
+            const labelHover = pill.querySelector('.pill-label-hover');
+            
+            if (!circle || !labelNormal) return;
+
+            const rect = pill.getBoundingClientRect();
+            const w = rect.width;
+            const h = rect.height;
+            
+            // 几何计算：算出能刚好覆盖按钮的大圆尺寸
+            const R = ((w * w) / 4 + h * h) / (2 * h);
+            const D = Math.ceil(2 * R) + 2; 
+            const delta = Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 2;
+            const originY = D - delta;
+
+            // 初始化样式 (重置)
+            gsap.set(circle, {
+                width: D,
+                height: D,
+                bottom: -delta,
+                xPercent: -50,
+                scale: 0,
+                transformOrigin: `50% ${originY}px`
+            });
+            gsap.set(labelNormal, { y: 0 });
+            gsap.set(labelHover, { y: h + 10, opacity: 0 });
+        });
+    }
+
+    // 页面加载和缩放时重新计算
+    layoutPills();
+    window.addEventListener('resize', layoutPills);
+    // 等待字体加载完再算一次，防止宽度变化
+    document.fonts.ready.then(layoutPills);
+
+    // 绑定悬停事件
+    pills.forEach((pill) => {
+        const circle = pill.querySelector('.hover-circle');
+        const labelNormal = pill.querySelector('.pill-label');
+        const labelHover = pill.querySelector('.pill-label-hover');
+
+        pill.addEventListener('mouseenter', () => {
+            const h = pill.offsetHeight;
+            // 圆球放大填满
+            gsap.to(circle, { scale: 1.2, duration: 0.5, ease: "power3.out", overwrite: "auto" });
+            // 文字上滚
+            gsap.to(labelNormal, { y: -h - 10, duration: 0.5, ease: "power3.out", overwrite: "auto" });
+            gsap.fromTo(labelHover, 
+                { y: h + 10, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.5, ease: "power3.out", overwrite: "auto" }
+            );
+        });
+
+        pill.addEventListener('mouseleave', () => {
+            // 还原
+            gsap.to(circle, { scale: 0, duration: 0.4, ease: "power3.out", overwrite: "auto" });
+            gsap.to(labelNormal, { y: 0, duration: 0.4, ease: "power3.out", overwrite: "auto" });
+            gsap.to(labelHover, { y: pill.offsetHeight + 10, opacity: 0, duration: 0.4, ease: "power3.out", overwrite: "auto" });
+        });
+    });
+
+    // 移动端菜单开关
+    const mobileBtn = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu-popover');
+    if(mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            // 简单的图标切换动画
+            const lines = mobileBtn.querySelectorAll('.hamburger-line');
+            if (mobileMenu.classList.contains('active')) {
+                gsap.to(lines[0], { rotation: 45, y: 5, duration: 0.3 });
+                gsap.to(lines[1], { rotation: -45, y: -5, duration: 0.3 });
+            } else {
+                gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3 });
+                gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3 });
+            }
+        });
+    }
+
+    // ==========================================
+    // 2. 全屏滚动 & 导航跳转逻辑
+    // ==========================================
+    let isScrolling = false;
+    let currentSectionIndex = 0;
+    const sections = Array.from(document.querySelectorAll('section'));
+    const totalSections = sections.length;
+
+    // 核心滚动函数
+    function scrollToSection(index) {
+        isScrolling = true;
+        sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => { isScrolling = false; }, 800);
+    }
+
+    // 滚轮监听
+    window.addEventListener('wheel', (e) => {
+        if (isScrolling) return;
+        const currentSection = sections[currentSectionIndex];
+        const sectionHeight = currentSection.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const isLongSection = sectionHeight > windowHeight;
+
+        if (e.deltaY > 0) { // 向下
+            if (isLongSection) {
+                const scrollBottom = Math.ceil(window.scrollY + windowHeight);
+                if (scrollBottom < currentSection.offsetTop + sectionHeight) return;
+            }
+            if (currentSectionIndex < totalSections - 1) {
+                currentSectionIndex++;
+                scrollToSection(currentSectionIndex);
+            }
+        } else { // 向上
+            if (isLongSection) {
+                if (window.scrollY > currentSection.offsetTop) return;
+            }
+            if (currentSectionIndex > 0) {
+                currentSectionIndex--;
+                scrollToSection(currentSectionIndex);
+            }
+        }
+    }, { passive: false });
+
+    // 导航栏点击接管
+    const allNavLinks = document.querySelectorAll('.pill-nav a, .mobile-menu-link, .nav-links a');
+    allNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    const targetIndex = sections.indexOf(targetSection);
+                    if (targetIndex !== -1) {
+                        currentSectionIndex = targetIndex;
+                        scrollToSection(targetIndex);
+                        // 关闭移动端菜单
+                        if (mobileMenu && mobileMenu.classList.contains('active')) {
+                            mobileBtn.click(); // 触发点击事件来关闭
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+    // ==========================================
+    // 3. 背景切换监听 (Hyperspeed <-> Slideshow)
+    // ==========================================
+    const heroSection = document.getElementById('home');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.body.classList.remove('show-slideshow');
+            } else {
+                document.body.classList.add('show-slideshow');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    if (heroSection) observer.observe(heroSection);
+});
+</script>
+<script type="module" src="hyperspeed.js"></script>
 </body>
+
 </html>

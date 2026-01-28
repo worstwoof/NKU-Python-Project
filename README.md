@@ -1,114 +1,87 @@
-# 🦖 Cyber Smash: Data Destruction (赛博黑客：数据大破坏)
+# Cyber Smash (赛博黑客) - 体感跑酷游戏
 
-![Godot Engine](https://img.shields.io/badge/Godot-v4.5+-blue.svg) ![Python](https://img.shields.io/badge/Python-3.x-yellow.svg) ![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10+-teal.svg) ![Status](https://img.shields.io/badge/Status-In%20Development-orange)
+![Godot Engine](https://img.shields.io/badge/Godot-v4.5+-blue.svg) ![Python](https://img.shields.io/badge/Python-3.x-yellow.svg) ![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10+-teal.svg)
 
-> **"操控赛博怪兽，粉碎防火墙，成为数据洪流中的破坏王！"**
-> 
-> 这是一个基于 **Godot 4** 引擎开发，结合 **Python MediaPipe** 体感控制的 3D 无尽跑酷游戏。玩家通过摄像头控制一只体素风格的怪兽，在赛博朋克风格的电子高速公路上狂奔。
+这是一个基于 **Godot 4** 引擎开发，并结合 **Python MediaPipe** 实现体感控制的 3D 无尽跑酷游戏。玩家通过摄像头和手势，控制一只赛博朋克风格的怪兽，在充满霓虹灯效的数字高速公路上躲避障碍、摧毁敌人、挑战高分。
 
 ---
 
-## 🎮 核心玩法 (Features)
+## 1. ✨ 核心功能
 
-* **👾 赛博怪兽 (Cyber Kaiju):** 扮演由故障数据组成的体素怪兽。
-* **📸 体感操控 (Motion Control):**
-	* **头部倾斜:** 控制左右变道。
-	* **挥动拳头:** 击碎前方的红色防火墙 (Firewall)。
-	* **张开手掌:** 破解加密门。
-* **💥 物理破坏:** 利用 Godot 物理引擎实现的积木坍塌效果，极致解压。
-* **🌃 赛博视效:** 独特的 MagicaVoxel 低模风格 + Godot WorldEnvironment 辉光特效。
+*   **✋ AI 手势控制:** 无需手柄或键盘！项目通过 Python、OpenCV 和 MediaPipe 实时捕捉摄像头前的手部动作，实现真正的体感交互。
+    *   **左右移动:** 手在画面中的水平位置决定角色移动方向。
+    *   **跳跃:** 快速向上挥手。
+    *   **攻击:** 握拳。
+*   **💥 动态跑酷世界:**
+    *   **程序化无限关卡:** 道路和障碍物自动生成，每一次奔跑都是新的挑战。
+    *   **速度递增:** 游戏速度会随时间不断加快，考验你的反应极限。
+    *   **可破坏的障碍:** 部分障碍物需要通过“握拳”手势来击碎。
+*   **🎁 丰富的游戏元素:**
+    *   **道具系统:** 包含“无敌护盾”和“金币磁铁”等多种增强道具。
+    *   **得分与生命系统:** 完整的游戏循环，包含得分统计和生命值管理。
+*   **🎮 一键启动:** 项目提供了 `Launcher.bat` 脚本，可以一键启动手势控制器和游戏主程序，并能在游戏结束后自动清理进程，极大地方便了普通用户。
+*   **🌐 项目宣传网站:** 项目包含一个使用 HTML/CSS 制作的精美静态网页，用于展示游戏特色、开发团队和下载指南。
 
 ---
 
-## 📂 项目目录结构 (Project Structure)
+## 2. 🛠️ 技术栈
 
-为防止多人协作冲突，请严格遵守以下目录规范：
+*   **游戏引擎:** **Godot Engine 4.5+**
+*   **游戏逻辑:** **GDScript**
+*   **体感控制:** **Python 3**
+    *   **`opencv-python`**: 用于摄像头视频流处理。
+    *   **`mediapipe`**: 用于高性能的手部关键点检测和姿态识别。
+*   **通信:** Python 控制器通过 **UDP** 协议将指令发送给 Godot 游戏。
+*   **前端展示:** **HTML5 / CSS3**
 
-```text
-CyberSmash_Project/
-├── Assets/                 # 🎨 美术资源仓库
-│   ├── Models/             # MagicaVoxel 导出的 .obj/.gltf
-│   │   ├── Character/      # 金宇辰 怪兽模型
-│   │   ├── Environment/    # 黄子豪/刘珂 路块、大楼模型
-│   │   └── Props/          # 蔡子涵 障碍物、金币
-│   ├── Audio/              # 🎵 音效与 BGM
-│   └── Textures/           # 🖼️ 贴图文件
-├── Scenes/                 # 🎬 Godot 场景文件 (.tscn)
-│   ├── Levels/             # 关卡主场景 (Main.tscn)
-│   ├── Prefabs/            # 预制件 (独立开发的零件)
-│   │   ├── Player.tscn     # 怪兽
-│   │   ├── RoadChunk.tscn  # 路块
-│   │   └── Obstacles/      # 各种障碍
-│   └── UI/                 # 界面场景
-├── Scripts/                # 📝 Godot 脚本 (.gd)
-│   ├── Global/             # 全局单例 (GameManager)
-│   ├── Player/             # 角色控制逻辑
-│   └── Level/              # 地图生成逻辑
-├── Python_Controller/      # 🐍 MediaPipe 控制器 (独立运行)
-│   ├── main.py             # Python 入口
-│   └── requirements.txt    # 依赖库
-└── project.godot           # 项目配置文件
-````
+---
 
------
-
-## 🚀 快速开始 (Getting Started)
-
-### 1\. 游戏端 (Godot)
-
-1.  下载并打开 **Godot Engine 4.x**。
-2.  点击 `导入 (Import)`，选择本项目的根文件夹。
-3.  运行 `Main.tscn` 场景。
-	  * *注意：此时游戏会监听 UDP 端口 (默认 5005) 等待指令。*
-
-### 2\. 控制端 (Python)
-
-你需要一个摄像头来游玩本项目。
-
-1.  安装依赖：
-	```bash
-	pip install mediapipe opencv-python
-	```
-2.  运行控制脚本：
-	```bash
-	cd Python_Controller
-	python main.py
-	```
-3.  对准摄像头，开始你的表演！
-
------
-
-## 👥 团队分工 (The Team)
-
-| 成员 | 角色代号 | 职责范围 | 关键产出 |
-| :--- | :--- | :--- | :--- |
-| **成员 黄子豪** | 🛣️ 赛道基建师 | **场景搭建** | 网格路面、无限生成逻辑、碰撞边界 |
-| **成员 金宇辰** | 🦖 怪兽生物师 | **主角制作** | 体素怪兽建模、Mixamo 动作绑定、状态机 |
-| **成员 蔡子涵** | 🧱 障碍交互师 | **关卡设计** | 可破坏墙体、金字塔陷阱、金币、物理碰撞 |
-| **成员 刘珂** | 🏙️ 城市景观师 | **氛围营造** | 赛博摩天大楼、空中拱门、辉光特效 (Shader) |
-
------
-
-## ⚠️ 协作铁律 (Development Rules)
-
-1.  **互不侵犯：** 严禁修改不属于你职责范围内的 `.tscn` 文件。
-2.  **资源归位：** 所有模型必须放在 `Assets` 对应的子文件夹内，严禁扔在根目录。
-3.  **主场景保护：** `Main.tscn` 由**队长**统一维护。成员开发时请使用 `Test_Level.tscn` 进行测试。
-4.  **提交规范：** 每天收工前，请确保代码无报错后再 Push 到仓库。
-
------
-
-## 🎨 美术规范 (Art Style)
-
-  * **风格：** Voxel Cyberpunk (体素赛博朋克)
-  * **工具：** MagicaVoxel
-  * **标准色板：**
-	  * ⚫ **背景/建筑主体:** 纯黑 (\#000000)
-	  * 🔵 **主角/友方:** 青色 (\#00FFFF) [高发光]
-	  * 🔴 **敌人/障碍:** 洋红 (\#FF00FF) [高发光]
-	  * 🟡 **奖励:** 亮黄 (\#FFFF00) [高发光]
-
-
+## 3. 📂 目录结构
 
 ```
+D:\DESKTOP\NKU-PYTHON-PROJECT
+│
+├── CyberSmash_V1.0/     # 存放【已打包的可执行版本】，适合直接游玩
+│   ├── Launcher.bat         # ✅ 推荐！一键启动器
+│   ├── CyberSmash/          # Godot 游戏程序
+│   └── hand_controller/     # Python 控制器程序
+│
+├── 前端/                  # 存放【项目宣传网页】的源代码
+│   ├── index.html
+│   └── style.css
+│
+├── 项目源代码/            # 存放【完整的开发源文件】，适合开发者
+│   ├── project.godot        # Godot 项目主文件
+│   ├── Assets/              # 美术、音频等资源
+│   ├── Scenes/              # Godot 场景 (.tscn)
+│   ├── Scripts/             # GDScript 脚本 (.gd)
+│   └── Python_Controller/   # Python 控制器源代码 (.py)
+│
+├── info.txt               # (本文) 由 AI 生成的详细项目介绍
+└── README.md              # (本文) 由 AI 生成的项目 README
 ```
+
+---
+
+## 4. 🚀 如何开始
+
+### 快速游玩 (面向玩家)
+
+1.  进入 `CyberSmash_V1.0` 文件夹。
+2.  确保你的电脑已连接并允许使用摄像头。
+3.  直接双击运行 `Launcher.bat` 文件，它会自动为你准备好一切。
+4.  开始游戏，并根据屏幕上的摄像头预览调整你的手势！
+
+### 从源码运行 (面向开发者)
+
+1.  **启动游戏端:**
+    *   下载并安装 **Godot Engine 4.x**。
+    *   在 Godot 中，选择“导入”，然后选择 `项目源代码` 文件夹。
+    *   打开项目后，可以运行主场景 `main.tscn` 或 `MainMenu.tscn`。
+2.  **启动控制端:**
+    *   确保你的电脑安装了 Python 3。
+    *   安装必要的库：`pip install opencv-python mediapipe`
+    *   进入 `项目源代码/Python_Controller/` 目录。
+    *   运行脚本: `python hand_controller.py`。
+3.  **开始游戏:**
+    *   **务必先启动 Python 控制器**，再从 Godot 编辑器中启动游戏。
