@@ -1,87 +1,139 @@
-# Cyber Smash (赛博黑客) - 体感跑酷游戏
+<div align="center">
 
-![Godot Engine](https://img.shields.io/badge/Godot-v4.5+-blue.svg) ![Python](https://img.shields.io/badge/Python-3.x-yellow.svg) ![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10+-teal.svg)
+# 🦖 Cyber Smash: Data Destruction
 
-这是一个基于 **Godot 4** 引擎开发，并结合 **Python MediaPipe** 实现体感控制的 3D 无尽跑酷游戏。玩家通过摄像头和手势，控制一只赛博朋克风格的怪兽，在充满霓虹灯效的数字高速公路上躲避障碍、摧毁敌人、挑战高分。
+### (赛博黑客：数据大破坏)
 
----
+*基于 Godot 4 引擎与 MediaPipe 视觉算法的 3D 体感跑酷游戏*
 
-## 1. ✨ 核心功能
+![Godot 4](https://img.shields.io/badge/Godot-v4.5+-478cbf?logo=godotengine&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
+![MediaPipe](https://img.shields.io/badge/AI-MediaPipe-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-*   **✋ AI 手势控制:** 无需手柄或键盘！项目通过 Python、OpenCV 和 MediaPipe 实时捕捉摄像头前的手部动作，实现真正的体感交互。
-    *   **左右移动:** 手在画面中的水平位置决定角色移动方向。
-    *   **跳跃:** 快速向上挥手。
-    *   **攻击:** 握拳。
-*   **💥 动态跑酷世界:**
-    *   **程序化无限关卡:** 道路和障碍物自动生成，每一次奔跑都是新的挑战。
-    *   **速度递增:** 游戏速度会随时间不断加快，考验你的反应极限。
-    *   **可破坏的障碍:** 部分障碍物需要通过“握拳”手势来击碎。
-*   **🎁 丰富的游戏元素:**
-    *   **道具系统:** 包含“无敌护盾”和“金币磁铁”等多种增强道具。
-    *   **得分与生命系统:** 完整的游戏循环，包含得分统计和生命值管理。
-*   **🎮 一键启动:** 项目提供了 `Launcher.bat` 脚本，可以一键启动手势控制器和游戏主程序，并能在游戏结束后自动清理进程，极大地方便了普通用户。
-*   **🌐 项目宣传网站:** 项目包含一个使用 HTML/CSS 制作的精美静态网页，用于展示游戏特色、开发团队和下载指南。
+![Project Banner](img/website1.png)
 
----
+</div>
 
-## 2. 🛠️ 技术栈
+## 📖 项目简介
 
-*   **游戏引擎:** **Godot Engine 4.5+**
-*   **游戏逻辑:** **GDScript**
-*   **体感控制:** **Python 3**
-    *   **`opencv-python`**: 用于摄像头视频流处理。
-    *   **`mediapipe`**: 用于高性能的手部关键点检测和姿态识别。
-*   **通信:** Python 控制器通过 **UDP** 协议将指令发送给 Godot 游戏。
-*   **前端展示:** **HTML5 / CSS3**
+**Cyber Smash** 是一款融合了 **赛博朋克风格** 与 **体感交互技术** 的 3D 无尽跑酷游戏。
 
----
+不同于传统游戏，本项目摒弃了键盘鼠标，创新性地使用 **Python MediaPipe** 捕捉玩家的手势动作，通过 **UDP 协议** 实时驱动 **Godot 引擎** 中的体素怪兽（Godzilla）。玩家需要在霓虹闪烁的数据世界中穿行，挥动双拳粉碎防火墙，跳跃躲避杀毒程序的追踪。
 
-## 3. 📂 目录结构
+本项目是南开大学 Python 程序设计课程的综合实验作品。
 
+## ✨ 核心亮点
+
+* **👋 AI 视觉体感控制**：利用 OpenCV + MediaPipe 实现低延迟手势识别，支持移动、跳跃、攻击等动作。
+* **🔌 跨进程通信架构**：Python（视觉端）与 Godot（游戏端）通过 UDP Socket (Port 4242) 进行解耦通信。
+* **♾️ 程序化地图生成**：基于 Chunk 的无限地图生成算法，配合对象池技术优化性能。
+* **🎨 独家体素美术**：原创的哥斯拉主角模型与赛博城市场景，包含完整的骨骼动画绑定。
+* **🚀 一键部署体验**：提供 `Launcher.bat` 脚本，自动编排 AI 进程与游戏进程，即开即玩。
+
+## 📸 游戏资产与截图
+
+### 核心角色与场景
+| **体素哥斯拉 (Player)** | **无限赛博赛道 (World)** |
+| :---: | :---: |
+| ![Player](img/player.jpg) | ![Road](img/road.jpg) |
+
+### 障碍物系统
+| **红锁力场** (不可跳跃) | **尖刺炸弹** (需跳跃) | **阻挡墙** (需握拳击破) |
+| :---: | :---: | :---: |
+| ![Lock](img/obstacle.jpg) | ![Spike](img/zhadan.jpg) | ![Wall](img/zhangaiwu.jpg) |
+
+### 道具与增益
+| **无敌护盾** | **金币磁铁** | **医疗包** |
+| :---: | :---: | :---: |
+| ![Shield](img/hudun.jpg) | ![Magnet](img/citie.jpg) | ![Heart](img/heart.jpg) |
+
+## 🎮 游戏操作指南
+
+无需任何外设，只需要一个 **摄像头**！启动后请确保手部位于预览框内。
+
+| 动作 | 手势操作 | 游戏反馈 |
+| :--- | :--- | :--- |
+| **左右移动** | 手掌在画面 **左 / 右** 区域平移 | 角色向左/右变道 |
+| **跳跃** 🚀 | 手掌张开状态下 **快速上抬** | 角色跳跃，跨越断桥/炸弹 |
+| **攻击** 👊 | 五指快速 **握拳** | 击碎前方的阻挡墙 (QTE) |
+| **暂停** | 键盘 `Esc` | 暂停游戏 |
+
+## 🛠️ 安装与运行
+
+本项目已打包为 Windows 独立可执行文件，无需配置复杂的 Python 环境。
+
+### 快速启动 (推荐)
+1. 下载并解压 Release 包 `CyberSmash_V1.0.zip`。
+2. 确保电脑连接有可用摄像头。
+3. 双击根目录下的 **`Launcher.bat`**。
+   * 脚本将自动启动 AI 视觉引擎（后台）和游戏客户端。
+   * 退出游戏时，脚本会自动清理后台进程。
+
+### 源码运行 (开发模式)
+如果你想修改代码，请按以下步骤操作：
+
+
+1. **Python 环境**:
+   ```bash
+   pip install opencv-python mediapipe
+   python hand_controller/hand_controller.py
+
+
+2.**Godot 环境:**
+
+使用 Godot 4.5+ 打开 project.godot。
+
+运行主场景 res://Scenes/Levels/Splash.tscn。
+
+## 📂 项目结构
 ```
-D:\DESKTOP\NKU-PYTHON-PROJECT
-│
-├── CyberSmash_V1.0/     # 存放【已打包的可执行版本】，适合直接游玩
-│   ├── Launcher.bat         # ✅ 推荐！一键启动器
-│   ├── CyberSmash/          # Godot 游戏程序
-│   └── hand_controller/     # Python 控制器程序
-│
-├── 前端/                  # 存放【项目宣传网页】的源代码
-│   ├── index.html
-│   └── style.css
-│
-├── 项目源代码/            # 存放【完整的开发源文件】，适合开发者
-│   ├── project.godot        # Godot 项目主文件
-│   ├── Assets/              # 美术、音频等资源
-│   ├── Scenes/              # Godot 场景 (.tscn)
-│   ├── Scripts/             # GDScript 脚本 (.gd)
-│   └── Python_Controller/   # Python 控制器源代码 (.py)
-│
-├── info.txt               # (本文) 由 AI 生成的详细项目介绍
-└── README.md              # (本文) 由 AI 生成的项目 README
+Plaintext
+CyberSmash_Project/
+├── Launcher.bat                # [核心] 一键启动脚本
+├── CyberSmash_V1.0/            # [交付] 编译好的游戏包
+│   ├── CyberSmash.exe          # Godot 游戏主程序
+│   └── hand_controller/        # Python 视觉控制器
+├── 项目源代码/
+│   ├── Python_Controller/      # Python 源码 (hand_controller.py)
+│   ├── Assets/                 # 美术资源 (模型, 贴图, 音效)
+│   ├── Scenes/                 # Godot 场景文件 (.tscn)
+│   └── Scripts/                # GDScript 逻辑脚本
+└── 前端/                       # 配套宣传网站源码
+    ├── index.html
+    ├── style.css               # 包含 Glitch 特效与响应式布局
+    └── hyperspeed.js           # Three.js 3D 背景特效
 ```
+## 🏗️ 技术架构
+系统采用 “生产者-消费者” 模型：
+```
+代码段
+graph LR
+    A[摄像头 Input] -->|OpenCV| B(Python 视觉端)
+    B -->|MediaPipe| C{手势分析}
+    C -->|Move/Jump/Punch| D[UDP Socket]
+    D -->|Port 4242| E[Godot 游戏端]
+    E -->|GDScript| F[角色动作响应]
+```
+## 🌐 配套宣传网站
+我们为项目搭建了具有 Glitch 故障风 和 Hyperspeed 3D背景 的宣传网站。
+
+## 👥 开发团队
+| 姓名 | 手势操作 |
+| :--- | :--- |
+| 黄子豪 | Godot游戏场景搭建和脚本编写，游戏板块的整合，游戏ui和菜单优化，网页优化，撰写实验报告与提交文档 |
+| 蔡子涵 | Godot道具建模和脚本编写，python代码编写，游戏集成，录制讲解视频 |
+| 刘 珂 | 宣传网页设计、游戏背景搭建和脚本编写，讲解视频剪辑 |
+| 金宇辰 | 游戏哥斯拉3D建模和脚本编写，实验报告初稿 | 
+
+## 📄 版权说明
+
+本项目代码开源，美术资源（哥斯拉模型等）为团队原创。 MediaPipe is a trademark of Google LLC. Godot Engine is capable of MIT License.
 
 ---
 
-## 4. 🚀 如何开始
+<div align="center">
 
-### 快速游玩 (面向玩家)
+*Built with ❤️ by Cyber Smash Dev Team @ NKU*
 
-1.  进入 `CyberSmash_V1.0` 文件夹。
-2.  确保你的电脑已连接并允许使用摄像头。
-3.  直接双击运行 `Launcher.bat` 文件，它会自动为你准备好一切。
-4.  开始游戏，并根据屏幕上的摄像头预览调整你的手势！
-
-### 从源码运行 (面向开发者)
-
-1.  **启动游戏端:**
-    *   下载并安装 **Godot Engine 4.x**。
-    *   在 Godot 中，选择“导入”，然后选择 `项目源代码` 文件夹。
-    *   打开项目后，可以运行主场景 `main.tscn` 或 `MainMenu.tscn`。
-2.  **启动控制端:**
-    *   确保你的电脑安装了 Python 3。
-    *   安装必要的库：`pip install opencv-python mediapipe`
-    *   进入 `项目源代码/Python_Controller/` 目录。
-    *   运行脚本: `python hand_controller.py`。
-3.  **开始游戏:**
-    *   **务必先启动 Python 控制器**，再从 Godot 编辑器中启动游戏。
+</div>
