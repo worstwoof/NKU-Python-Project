@@ -115,8 +115,41 @@ graph LR
     D -->|Port 4242| E[Godot 游戏端]
     E -->|GDScript| F[角色动作响应]
 ```
-## 🌐 配套宣传网站
-我们为项目搭建了具有 Glitch 故障风 和 Hyperspeed 3D背景 的宣传网站。
+## 💻 技术栈 (Tech Stack)
+
+本项目采用跨语言、跨平台的异构架构开发，各模块技术选型如下：
+
+### 🎮 游戏客户端 (Game Client)
+* **引擎核心**: [Godot Engine 4.5+](https://godotengine.org/)
+* **编程语言**: GDScript (基于 Python 语法的原生脚本)
+* **核心机制**:
+    * **UDP Server**: 内置 `UDPServer` 轮询监听 4242 端口，实现非阻塞式指令接收.
+    * **Signal System**: 利用观察者模式（Signals）解耦 UI、玩家与游戏管理器.
+    * **Procedural Generation**: 基于 Chunk 的无限地图动态生成与对象池复用算法.
+    * **Shader**: 使用 Godot Shading Language 编写霓虹发光与建筑物特效.
+
+### 👁️ AI 视觉引擎 (Computer Vision)
+* **编程语言**: Python 3.10+
+* **核心库**:
+    * **MediaPipe Solutions**: Google 开源的高性能手部骨架追踪模型 (Hands).
+    * **OpenCV (cv2)**: 负责摄像头视频流采集、图像预处理（镜像翻转、色彩空间转换）.
+    * **Socket**: 使用标准库 `socket` 实现 UDP 数据包的封包与发送.
+    * **Tkinter**: 调用底层 API 获取物理屏幕分辨率，实现窗口自适应锚定.
+
+### 🌐 宣传官网 (Web Frontend)
+* **基础架构**: HTML5 Semantic / CSS3 Variables
+* **3D 渲染**: **Three.js** (WebGL) + **Postprocessing** (Bloom, SMAA) 实现 Hyperspeed 隧道特效.
+* **动画交互**:
+    * **GSAP (GreenSock)**: 处理导航栏微交互与元素入场动画.
+    * **CSS Keyframes**: 实现纯 CSS 的 Glitch 故障文字与扫描线特效.
+    * **IntersectionObserver**: 视口检测 API，实现 3D 背景的自动休眠以优化 GPU 性能.
+
+### 🛠️ 工程化与部署 (DevOps)
+* **自动化脚本**: Windows Batch (`.bat`) 实现多进程编排与生命周期守护.
+* **打包工具**:
+    * **Godot Export**: 导出 Windows 平台可执行文件 (`.exe` + `.pck`).
+    * **PyInstaller**: 将 Python 环境与依赖库封装为独立可执行程序.
+
 
 ## 👥 开发团队
 | 姓名 | 手势操作 |
