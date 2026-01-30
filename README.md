@@ -90,8 +90,8 @@
 ```
 Plaintext
 CyberSmash_Project/
-├── Launcher.bat                # [核心] 一键启动脚本
-├── CyberSmash_V1.0/            # [交付] 编译好的游戏包
+├── Launcher.bat                # 一键启动脚本
+├── CyberSmash_V1.0/            #  编译好的游戏包
 │   ├── CyberSmash.exe          # Godot 游戏主程序
 │   └── hand_controller/        # Python 视觉控制器
 ├── 项目源代码/
