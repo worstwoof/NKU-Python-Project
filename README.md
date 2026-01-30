@@ -161,7 +161,11 @@ graph LR
 
 ## 📄 版权说明
 
-本项目代码开源，美术资源（哥斯拉模型等）为团队原创。 MediaPipe is a trademark of Google LLC. Godot Engine is capable of MIT License.
+本项目代码开源，美术资源（哥斯拉模型等）为团队原创。
+
+MediaPipe is a trademark of Google LLC. 
+
+Godot Engine is capable of MIT License.
 
 ---
 
